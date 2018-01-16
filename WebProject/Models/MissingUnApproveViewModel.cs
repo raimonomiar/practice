@@ -13,9 +13,16 @@ namespace WebProject.Models
 
         public IEnumerable<SelectListItem> OfficeList { get; set; }
 
-        public IEnumerable<SelectListItem> FiscalYear { get; set; }
+        public IEnumerable<SelectListItem> FiscalYearList { get; set; }
 
         public MissingModel MissingModel{ get; set; }
+
+        public List<MissingModel> MissingModelList { get; set; }
+
+        public bool IsMatches { get; set; }
+
+        public int? MissingCount { get; set; }
+
 
     }
 }

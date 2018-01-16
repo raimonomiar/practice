@@ -39,13 +39,28 @@ namespace WebProject.Controllers
             var missingUnApproveViewModel = new MissingUnApproveViewModel
             {
                 MissingModel = missingService.GetEmptyModel(),
-                FiscalYear = dynamicSelectList.GetFiscalYearList(),
+                FiscalYearList = dynamicSelectList.GetFiscalYearList(),
                 OfficeList = dynamicSelectList.GetOfficeTypeList(),
                 GenderList = StaticSelectList.GenderList()
-                
+
             };
 
             return View(missingUnApproveViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(MissingUnApproveViewModel model)
+        {
+            try
+            {
+                //model.MissingModel = missingService.MissingMatches().ToList(); 
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
         }
     }
 }

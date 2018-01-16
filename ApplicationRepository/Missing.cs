@@ -44,8 +44,6 @@ namespace ApplicationRepository
         public Nullable<System.DateTime> DOB { get; set; }
         public Nullable<int> EstimatedAge { get; set; }
         public string Hieght { get; set; }
-
-        public string HeightUnit { get; set; }
         public string Weight { get; set; }
         public string ClothesWorn { get; set; }
         public Nullable<int> EyeColorId { get; set; }
