@@ -1,0 +1,85 @@
+﻿@model IEnumerable<MenuModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">Menu Setup</h3>
+        <span class="pull-right">
+            <a class="btn btn-primary" href="@Url.Action("Create","Menu")"><i class="fa fa-plus"></i> Add New</a>
+        </span>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <table class="table table-bordered">
+            <tr>
+                <th style="width: 100px">@Html.DisplayNameFor(x=>x.ParentId)</th>
+                <th>@Html.DisplayNameFor(x=>x.Name)</th>
+                <th>@Html.DisplayNameFor(x=>x.MenuDetails)</th>
+                <th>@Html.DisplayNameFor(x => x.CssClass)</th>
+                <th>@Html.DisplayNameFor(x => x.MenuLink)</th>
+                <th>@Html.DisplayNameFor(x => x.Order)</th>
+                <th>@Html.DisplayNameFor(x => x.Controller)</th>
+                <th>@Html.DisplayNameFor(x => x.IsActive)</th>
+                <th style="width: 50px;">Actions</th>
+            </tr>
+
+            @foreach (var menu in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(x => menu.ParentId)
+
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(x => menu.Name)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => menu.MenuDetails)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(x => menu.CssClass)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(x => menu.MenuLink)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(x => menu.Order)
+                    </td>
+                    
+                    <td>
+                        @Html.DisplayFor(x => menu.Controller)
+                    </td>
+                    
+                    <td>
+                        @if (menu.IsActive == true)
+                        {
+                            <span class="label label-success">Active</span>
+
+                        }
+                        else
+                        {
+                            <span class="label label-warning">Inactive</span>
+                        }
+
+                    <td>
+
+                        <a href="@Url.Action("Edit","Menu", new { id = menu.Id })" class="btn btn-primary"><i class="fa fa-pencil-square-o pull-left"></i></a>
+                        
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <!-- /.box-body -->
+
+</div>

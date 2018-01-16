@@ -1,0 +1,84 @@
+﻿@model UserModel
+@{
+    ViewBag.Title = "Index";
+    int i = 1;
+}
+
+
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">User Groups/Roles</h3>
+        <span class="pull-right">
+            <a class="btn btn-primary" href="@Url.Action("Create","User")"><i class="fa fa-plus"></i> Add New</a>
+        </span>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <table class="table table-bordered">
+            <tr>
+                <th style="width: 10px">S.N.</th>
+                <th>@Html.DisplayNameFor(x=>x.Username)</th>
+                <th>@Html.DisplayNameFor(x=>x.RoleId)</th>
+                <th>@Html.DisplayNameFor(x=>x.IsActive)</th>
+                <th style="width: 250px;">Actions</th>
+            </tr>
+        
+            @foreach (var user in Model.UserList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(x => i)
+
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(x => user.Username)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x=>user.RoleName)
+                    </td>
+                    <td>
+                        @if (user.IsActive == true)
+                        {
+                            <span class="label label-success">Active</span> 
+
+                        }
+                        else
+                        {
+                            <span class="label label-warning">Inactive</span>
+                        }
+
+                    <td>
+
+                        <a href="@Url.Action("Update","User", new { id = user.UserId })" class="btn btn-primary"><i class="fa fa-pencil-square-o pull-left"></i></a>
+                        <a href="@Url.Action("Detail","User", new {id = user.UserId})" class="btn btn-primary"><i class="fa fa-eye pull-left"></i></a> 
+                        <a href="@Url.Action("Delete","User", new { id = user.UserId })" class="btn btn-primary del"><i class="fa fa-trash-o pull-left"></i></a>
+                    </td>
+                </tr>
+                i++;
+            }
+        </table>
+    </div>
+    <!-- /.box-body -->
+
+</div>
+@section scripts{
+
+    <script>
+        $(document).ready(function () {
+
+            $(".del").click(function () {
+
+                if (confirm("Are you sure you want to delete the role?")) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            });
+
+        });
+
+    </script>
+}

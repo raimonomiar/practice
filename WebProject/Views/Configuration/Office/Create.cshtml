@@ -1,0 +1,92 @@
+﻿@model OfficeModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="col-md-6">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Add Office</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="box-body">
+
+                <div class="form-group">
+                    @Html.LabelFor(x => x.OfficeCode, new { @class = "control-label" })
+
+                    @Html.TextBoxFor(x => x.OfficeCode, new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(x => x.OfficeCode, null, new { @class = "text-red" })
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(x => x.OfficeName, new { @class = "control-label" })
+
+                    @Html.TextBoxFor(x => x.OfficeName, new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(x => x.OfficeName, null, new { @class = "text-red" })
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.OfficeTypeId, new { @class = "control-label" })
+
+                    @Html.DropDownListFor(x => x.OfficeTypeId, Model.OfficeTypeList, "Choose Office Type--", htmlAttributes: new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(x => x.OfficeTypeId, null, new { @class = "text-red" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(x => x.OfficeAddress, new { @class = "control-label" })
+
+                    @Html.TextBoxFor(x => x.OfficeAddress, new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(x => x.OfficeAddress, null, new { @class = "text-red" })
+
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(x => x.OfficePhone, new { @class = "control-label" })
+
+                    @Html.TextBoxFor(x => x.OfficePhone, new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(x => x.OfficePhone, null, new { @class = "text-red" })
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(x => x.OfficeEmail, new { @class = "control-label" })
+
+                    @Html.TextBoxFor(x => x.OfficeEmail, new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(x => x.OfficeEmail, null, new { @class = "text-red" })
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.IsActive, new { @class = "control-label" })
+
+                    @Html.DropDownListFor(x => x.IsActive, new List<SelectListItem>() { new SelectListItem { Value = "true", Text = "Active" }, new SelectListItem { Value = "false", Text = "Inactive" } }, "---Choose options---", new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(x => x.IsActive, null, new { @class = "text-red" })
+
+                </div>
+            </div>
+            <div class="box-footer">
+                <a href="@Url.Action("Index","Office")" class="btn btn-default">Cancel</a>
+                <button type="submit" class="btn btn-info pull-right">Create</button>
+            </div>
+        }
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

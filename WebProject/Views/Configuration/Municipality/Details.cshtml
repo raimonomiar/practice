@@ -1,0 +1,36 @@
+﻿@model MunicipalityModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="col-md-5">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Municipality Details</h3>
+        </div>
+
+        <dl class="dl-horizontal">
+            <dt>@Html.DisplayNameFor(x => x.MunicipalityName)</dt>
+            <dd>@Html.DisplayFor(x => x.MunicipalityName)</dd>
+            <dt>@Html.DisplayNameFor(x => x.MunType.MuniType)</dt>
+            <dd>@Html.DisplayFor(x => x.MunType.MuniType)</dd>
+            <dt>@Html.DisplayNameFor(x => x.District.DistrictNameEng)</dt>
+            <dd>@Html.DisplayFor(x => x.District.DistrictNameEng)</dd>
+            <dt>@Html.DisplayNameFor(x => x.CreatedDate)</dt>
+            <dd>@Html.DisplayFor(x => x.CreatedDate)</dd>
+            @if (Model.UpdatedDate != null)
+            {
+                <dt>@Html.DisplayNameFor(x => x.UpdatedDate)</dt>
+                    <dd>@Html.DisplayFor(x => x.UpdatedDate)</dd>
+            }
+           
+    </dl>
+
+
+</div>
+</div>
+
+

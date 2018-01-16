@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="practiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="role_id" />
+    </Key>
+    <Property Name="role_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AccessAll" Type="Boolean" Nullable="false" />
+    <Property Name="RoleDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsPermanent" Type="Boolean" />
+    <NavigationProperty Name="tbl_role_access" Relationship="Self.FK__tbl_role___RoleI__3B75D760" FromRole="tbl_roles" ToRole="tbl_role_access" />
+    <NavigationProperty Name="tbl_users" Relationship="Self.FK__tbl_users__RoleI__398D8EEE" FromRole="tbl_roles" ToRole="tbl_users" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoginId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Created_at" Type="DateTime" Precision="3" />
+    <Property Name="Updated_at" Type="DateTime" Precision="3" />
+    <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
+    <Property Name="LoginCount" Type="Int32" />
+    <Property Name="LoginAttempt" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tbl_roles" Relationship="Self.FK__tbl_users__RoleI__398D8EEE" FromRole="tbl_users" ToRole="tbl_roles" />
+  </EntityType>
+  <EntityType Name="role_access">
+    <Key>
+      <PropertyRef Name="role_access_id" />
+      <PropertyRef Name="AllowAdd" />
+      <PropertyRef Name="AllowEdit" />
+      <PropertyRef Name="AllowDelete" />
+      <PropertyRef Name="AllowView" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="role_access_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AllowAdd" Type="Boolean" Nullable="false" />
+    <Property Name="AllowEdit" Type="Boolean" Nullable="false" />
+    <Property Name="AllowDelete" Type="Boolean" Nullable="false" />
+    <Property Name="AllowView" Type="Boolean" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tbl_roles" Relationship="Self.FK__tbl_role___RoleI__3B75D760" FromRole="tbl_role_access" ToRole="tbl_roles" />
+  </EntityType>
+  <Association Name="FK__tbl_role___RoleI__3B75D760">
+    <End Role="tbl_roles" Type="practiceModel.roles" Multiplicity="1" />
+    <End Role="tbl_role_access" Type="practiceModel.role_access" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_roles">
+        <PropertyRef Name="role_id" />
+      </Principal>
+      <Dependent Role="tbl_role_access">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_users__RoleI__398D8EEE">
+    <End Role="tbl_roles" Type="practiceModel.roles" Multiplicity="1" />
+    <End Role="tbl_users" Type="practiceModel.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_roles">
+        <PropertyRef Name="role_id" />
+      </Principal>
+      <Dependent Role="tbl_users">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="practiceEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="roles" EntityType="practiceModel.roles" />
+    <EntitySet Name="users" EntityType="practiceModel.users" />
+    <EntitySet Name="role_access" EntityType="practiceModel.role_access" />
+    <AssociationSet Name="FK__tbl_role___RoleI__3B75D760" Association="Self.FK__tbl_role___RoleI__3B75D760">
+      <End Role="tbl_roles" EntitySet="roles" />
+      <End Role="tbl_role_access" EntitySet="role_access" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_users__RoleI__398D8EEE" Association="Self.FK__tbl_users__RoleI__398D8EEE">
+      <End Role="tbl_roles" EntitySet="roles" />
+      <End Role="tbl_users" EntitySet="users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

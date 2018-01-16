@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="practiceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'practice.dbo.tbl_role_access' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tbl_role_access">
+    <Key>
+      <PropertyRef Name="role_access_id" />
+      <PropertyRef Name="AllowAdd" />
+      <PropertyRef Name="AllowEdit" />
+      <PropertyRef Name="AllowDelete" />
+      <PropertyRef Name="AllowView" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="role_access_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AllowAdd" Type="bit" Nullable="false" />
+    <Property Name="AllowEdit" Type="bit" Nullable="false" />
+    <Property Name="AllowDelete" Type="bit" Nullable="false" />
+    <Property Name="AllowView" Type="bit" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_roles">
+    <Key>
+      <PropertyRef Name="role_id" />
+    </Key>
+    <Property Name="role_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Detail" Type="text" Nullable="false" />
+    <Property Name="AccessAll" Type="bit" Nullable="false" />
+    <Property Name="RoleDetails" Type="ntext" />
+    <Property Name="IsPermanent" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_users">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="LoginId" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Created_at" Type="datetime" />
+    <Property Name="Updated_at" Type="datetime" />
+    <Property Name="LastLoginDate" Type="datetime" />
+    <Property Name="LoginCount" Type="int" />
+    <Property Name="LoginAttempt" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__tbl_role___RoleI__3B75D760">
+    <End Role="tbl_roles" Type="Self.tbl_roles" Multiplicity="1" />
+    <End Role="tbl_role_access" Type="Self.tbl_role_access" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_roles">
+        <PropertyRef Name="role_id" />
+      </Principal>
+      <Dependent Role="tbl_role_access">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_users__RoleI__398D8EEE">
+    <End Role="tbl_roles" Type="Self.tbl_roles" Multiplicity="1" />
+    <End Role="tbl_users" Type="Self.tbl_users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_roles">
+        <PropertyRef Name="role_id" />
+      </Principal>
+      <Dependent Role="tbl_users">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="practiceModelStoreContainer">
+    <EntitySet Name="tbl_roles" EntityType="Self.tbl_roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_users" EntityType="Self.tbl_users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_role_access" EntityType="Self.tbl_role_access" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tbl_role_access].[role_access_id] AS [role_access_id], 
+    [tbl_role_access].[AllowAdd] AS [AllowAdd], 
+    [tbl_role_access].[AllowEdit] AS [AllowEdit], 
+    [tbl_role_access].[AllowDelete] AS [AllowDelete], 
+    [tbl_role_access].[AllowView] AS [AllowView], 
+    [tbl_role_access].[RoleId] AS [RoleId]
+    FROM [dbo].[tbl_role_access] AS [tbl_role_access]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__tbl_role___RoleI__3B75D760" Association="Self.FK__tbl_role___RoleI__3B75D760">
+      <End Role="tbl_roles" EntitySet="tbl_roles" />
+      <End Role="tbl_role_access" EntitySet="tbl_role_access" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_users__RoleI__398D8EEE" Association="Self.FK__tbl_users__RoleI__398D8EEE">
+      <End Role="tbl_roles" EntitySet="tbl_roles" />
+      <End Role="tbl_users" EntitySet="tbl_users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

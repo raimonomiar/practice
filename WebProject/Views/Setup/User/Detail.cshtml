@@ -1,0 +1,45 @@
+﻿@model UserModel
+
+
+    @{
+        ViewBag.Title = "Detail";
+    }
+
+
+    <div class="col-md-5">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">User Management</h3>
+            </div>
+
+            <dl class="dl-horizontal">
+                <dt>@Html.DisplayNameFor(x=>x.LoginId)</dt>
+                <dd>@Html.DisplayFor(x=>x.LoginId)</dd>
+                <dt>@Html.DisplayNameFor(x=>x.Username)</dt>
+                <dd>@Html.DisplayFor(x=>x.Username)</dd>
+                <dt>@Html.DisplayNameFor(x=>x.EmailAddress)</dt>
+                <dd>@Html.DisplayFor(x=>x.EmailAddress)</dd>
+                <dt>@Html.DisplayNameFor(x=>x.RoleName)</dt>
+                <dd>@Html.DisplayFor(x=>x.RoleName)</dd>
+                <dt>@Html.DisplayNameFor(x=>x.CreatedDate)</dt>
+                <dd>@Html.DisplayFor(x=>x.CreatedDate)</dd>
+                @if (Model.UpdatedDate !=null)
+                {
+                    <dt>@Html.DisplayNameFor(x=>x.UpdatedDate)</dt>
+                    <dd>@Html.DisplayFor(x=>x.UpdatedDate)</dd>
+                }
+                <dt>@Html.DisplayNameFor(x=>x.IsActive)</dt>
+                <dd>@if (Model.IsActive == true)
+                {
+                    <p class="bg-success">Active</p>
+
+                }
+                else
+                {
+                    <p class="text-danger">Inactive</p>
+                }</dd>
+            </dl>
+
+
+        </div>
+</div>

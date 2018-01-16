@@ -1,0 +1,79 @@
+﻿@model AssignMenuModel
+@{
+    ViewBag.Title = "AssignMenuAccess";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">@ViewBag.RoleName</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x=>x.Id)
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th style="width:150px;">Checkbox</th>
+                        <th>Menu</th>
+                        <th>Details</th>
+                        <th>Create</th>
+                        <th>Edit</th>
+                        <th>View</th>
+                        <th>Delete</th>
+
+                    </tr>
+
+                
+                </thead>
+                <tbody>
+                    @for (int i = 0; i <= Model.Menu.Count - 1; i++)
+                    {
+                        <tr>
+                            <td>
+                                @Html.CheckBoxFor(x => x.Menu[i].IsSelected, new { @class = "flat-red" } )
+                            </td>
+
+                            <td>
+                                @Html.HiddenFor(x => x.Menu[i].Id)
+                                @Html.DisplayFor(x => x.Menu[i].Name)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(x => x.Menu[i].MenuDetails)
+                            </td>
+
+                            <td>
+                                @Html.CheckBoxFor(x => x.Menu[i].Create, new { @class = "minimal" })
+                            </td>
+
+                            <td>
+                                @Html.CheckBoxFor(x => x.Menu[i].Update, new { @class = "minimal" })
+                            </td>
+
+                            <td>
+                                @Html.CheckBoxFor(x => x.Menu[i].Read, new { @class = "minimal" })
+                            </td>
+
+                            <td>
+                                @Html.CheckBoxFor(x => x.Menu[i].Delete, new { @class = "minimal" })
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="box-footer">
+                <a href="@Url.Action("Index","AssignMenu")" class="btn btn-default">Cancel</a>
+                <button type="submit" class="btn btn-info pull-right">Update</button>
+            </div>
+
+
+        }
+    </div>
+    <!-- /.box-body -->
+</div>

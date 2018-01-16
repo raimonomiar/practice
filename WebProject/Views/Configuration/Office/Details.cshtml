@@ -1,0 +1,60 @@
+﻿@model OfficeModel
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+<div class="col-md-5">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Office Details</h3>
+        </div>
+
+        <dl class="dl-horizontal">
+            <dt>@Html.DisplayNameFor(x =>x.OfficeCode)</dt>
+            <dd>@Html.DisplayFor(x => x.OfficeCode)</dd>
+            <dt>@Html.DisplayNameFor(x => x.OfficeName)</dt>
+            <dd>@Html.DisplayFor(x => x.OfficeName)</dd>
+            <dt>@Html.DisplayNameFor(x => x.OfficeAddress)</dt>
+            <dd>@Html.DisplayFor(x => x.OfficeAddress)</dd>
+            <dt>@Html.DisplayNameFor(x => x.OfficePhone)</dt>
+            <dd>@Html.DisplayFor(x => x.OfficePhone)</dd>
+
+            <dt>@Html.DisplayNameFor(x => x.OfficeEmail)</dt>
+            <dd>@Html.DisplayFor(x => x.OfficeEmail)</dd>
+
+            <dt>@Html.DisplayNameFor(x => x.IsActive)</dt>
+            <dd>
+                @if (Model.IsActive == true)
+            {
+                <p class="bg-success">Active</p>
+
+            }
+            else
+            {
+                <p class="text-danger">Inactive</p>
+            }
+        </dd>
+        
+
+
+            <dt>@Html.DisplayNameFor(x => x.CreatedDate)</dt>
+            <dd>@Html.DisplayFor(x => x.CreatedDate)</dd>
+
+            @if (Model.UpdatedDate != null)
+            {
+                <dt>@Html.DisplayNameFor(x=>x.UpdatedDate)</dt>
+                <dd>@Html.DisplayFor(x => x.UpdatedDate)</dd>
+            }
+
+            <dt>@Html.DisplayNameFor(x => x.OfficeTypeName)</dt>
+            <dd>@Html.DisplayFor(x => x.OfficeTypeName)</dd>
+        </dl>
+
+
+    </div>
+</div>

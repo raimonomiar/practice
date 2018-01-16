@@ -1,0 +1,106 @@
+﻿@model IEnumerable<MenuModel>
+
+
+@foreach(var item in Model)
+{
+    string active = "";
+
+    string menuClass = "";
+
+    
+
+    if ($"/{item.Controller}/{item.MenuLink}" == Request.Url.AbsolutePath)
+    {
+        active = "active";
+    }
+    if (item.ChildMenu.Count>0)
+    {
+        menuClass = "treeview";
+    }
+
+    <li class="@menuClass @active @foreach (var items in item.ChildMenu)
+    {
+        @($"/{items.Controller}/{items.MenuLink}" == Request.Url.AbsolutePath ? "active" : string.Empty)
+    }
+    ">
+        <a href="@Url.Action(item.MenuLink,item.Controller)">
+            <i class="@item.CssClass"></i>
+            <span>@item.Name</span>
+            @if (item.ChildMenu.Count>0)
+            {
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            }
+        </a>
+        @if (item.ChildMenu.Count>0)
+        {
+            <ul class="treeview-menu" style="@foreach (var items in item.ChildMenu)
+            {
+                @($"/{items.Controller}/{items.MenuLink}" == Request.Url.AbsolutePath ? "display:block;" : string.Empty)
+            }">
+                @foreach (var item1 in item.ChildMenu)
+                {
+                    <li class="@($"{item1.Controller}/{item1.MenuLink}" == Request.Url.AbsolutePath ?"active":string.Empty)" >
+                    
+                            <a href="@Url.Action(item1.MenuLink,item1.Controller)"><i class="@item1.CssClass"></i>@item1.Name</a>
+                    </li>
+                }
+
+            </ul>
+        }
+    </li>
+}
+
+@*@foreach (var item in Model)
+{
+    <li>
+        <a href="(@Url.Action(item.MenuLink,item.Controller)">
+            <i class="@item.CssClass"></i><span>@item.Name</span>
+
+            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+
+
+        </a>
+
+        @foreach (var subItem in item.m)
+            {
+                <ul class="treeview-menu">
+
+                    <li> <a href="@Url.Action(subItem.MenuLink,subItem.Controller)"><i class="@subItem.CssClass"></i><span>@item.Name</span></a></li>
+
+                </ul>
+            }
+
+
+
+    </li>
+}*@
+
+@*<li class="treeview">
+        <a href="#">
+            <i class="fa fa-cog"></i> <span>Setup</span><span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li> <a href="@Url.Action()"><span>Menu</span></a></li>
+            <li> <a href="@Url.Action("Index","Role")"><span>Roles</span></a></li>
+            <li> <a href="@Url.Action()"><span>Role Access</span></a></li>
+
+
+        </ul>
+    </li>
+
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-cogs"></i> <span>Setting</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="@Url.Action("Index","User")">Users</a></li>
+            <li><a href="#">Link in level 2</a></li>
+        </ul>
+    </li>*@
