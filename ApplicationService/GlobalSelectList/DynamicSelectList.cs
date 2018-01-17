@@ -101,17 +101,23 @@ namespace ApplicationService.GlobalSelectList
 
         public IEnumerable<SelectListItem> GetFiscalYearList([Optional] int fiscalYearId)
         {
-            var fiscalYearList = unitOfWork.FiscalYearRepository
-                .All()
-                .Select(x => new SelectListItem
-                {
-                    Value = x.Id.ToString(),
-                    Text = x.FiscalYearName,
-                    Selected = fiscalYearId == x.Id
-                })
-                .ToList();
+            var list = new List<SelectListItem>();
 
-            return fiscalYearList;
+            var fiscalYearList = unitOfWork.FiscalYearRepository
+                .All().ToList();
+
+            foreach (var item in fiscalYearList)
+            {
+                list.Add(new SelectListItem
+                {
+                    Selected = fiscalYearId == item.Id,
+                    Value = item.Id.ToString(),
+                    Text = item.FiscalYearName
+                });
+            }
+                
+
+            return list;
         }
 
         public IEnumerable<SelectListItem> GetOfficeList([Optional] int officeId)

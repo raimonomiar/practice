@@ -1,0 +1,694 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="practiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="practiceEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Colours" EntityType="practiceModel.Colour" />
+    <EntitySet Name="countries" EntityType="practiceModel.country" />
+    <EntitySet Name="Designations" EntityType="practiceModel.Designation" />
+    <EntitySet Name="Districts" EntityType="practiceModel.District" />
+    <EntitySet Name="EducationLevels" EntityType="practiceModel.EducationLevel" />
+    <EntitySet Name="Ethnicities" EntityType="practiceModel.Ethnicity" />
+    <EntitySet Name="FiscalYears" EntityType="practiceModel.FiscalYear" />
+    <EntitySet Name="IdTypes" EntityType="practiceModel.IdType" />
+    <EntitySet Name="Languages" EntityType="practiceModel.Language" />
+    <EntitySet Name="Menus" EntityType="practiceModel.Menu" />
+    <EntitySet Name="Missings" EntityType="practiceModel.Missing" />
+    <EntitySet Name="Municipalities" EntityType="practiceModel.Municipality" />
+    <EntitySet Name="MunicipalityTypes" EntityType="practiceModel.MunicipalityType" />
+    <EntitySet Name="Offices" EntityType="practiceModel.Office" />
+    <EntitySet Name="OfficeTypes" EntityType="practiceModel.OfficeType" />
+    <EntitySet Name="Religions" EntityType="practiceModel.Religion" />
+    <EntitySet Name="RoleAccesses" EntityType="practiceModel.RoleAccess" />
+    <EntitySet Name="Roles" EntityType="practiceModel.Role" />
+    <EntitySet Name="States" EntityType="practiceModel.State" />
+    <EntitySet Name="Users" EntityType="practiceModel.User" />
+    <EntitySet Name="Photos" EntityType="practiceModel.Photo" />
+    <AssociationSet Name="FK__Missing__EyeColo__5EBF139D" Association="practiceModel.FK__Missing__EyeColo__5EBF139D">
+      <End Role="Colour" EntitySet="Colours" />
+      <End Role="Missing" EntitySet="Missings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Missing__HairCol__60A75C0F" Association="practiceModel.FK__Missing__HairCol__60A75C0F">
+      <End Role="Colour" EntitySet="Colours" />
+      <End Role="Missing" EntitySet="Missings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Missing__Nationa__628FA481" Association="practiceModel.FK__Missing__Nationa__628FA481">
+      <End Role="country" EntitySet="countries" />
+      <End Role="Missing" EntitySet="Missings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Districts__State__5CD6CB2B" Association="practiceModel.FK__Districts__State__5CD6CB2B">
+      <End Role="State" EntitySet="States" />
+      <End Role="District" EntitySet="Districts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Municipal__DisId__693CA210" Association="practiceModel.FK__Municipal__DisId__693CA210">
+      <End Role="District" EntitySet="Districts" />
+      <End Role="Municipality" EntitySet="Municipalities" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Offices__DisId__6B24EA82" Association="practiceModel.FK__Offices__DisId__6B24EA82">
+      <End Role="District" EntitySet="Districts" />
+      <End Role="Office" EntitySet="Offices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Missing__Educati__5DCAEF64" Association="practiceModel.FK__Missing__Educati__5DCAEF64">
+      <End Role="EducationLevel" EntitySet="EducationLevels" />
+      <End Role="Missing" EntitySet="Missings" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ethnicity_id" Association="practiceModel.fk_ethnicity_id">
+      <End Role="Ethnicity" EntitySet="Ethnicities" />
+      <End Role="Missing" EntitySet="Missings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Missing__FiscalY__5FB337D6" Association="practiceModel.FK__Missing__FiscalY__5FB337D6">
+      <End Role="FiscalYear" EntitySet="FiscalYears" />
+      <End Role="Missing" EntitySet="Missings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Missing__IdTypeI__619B8048" Association="practiceModel.FK__Missing__IdTypeI__619B8048">
+      <End Role="IdType" EntitySet="IdTypes" />
+      <End Role="Missing" EntitySet="Missings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RoleAcces__MenuI__6D0D32F4" Association="practiceModel.FK__RoleAcces__MenuI__6D0D32F4">
+      <End Role="Menu" EntitySet="Menus" />
+      <End Role="RoleAccess" EntitySet="RoleAccesses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Missing__OfficeI__6383C8BA" Association="practiceModel.FK__Missing__OfficeI__6383C8BA">
+      <End Role="Office" EntitySet="Offices" />
+      <End Role="Missing" EntitySet="Missings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Missing__PMunici__6477ECF3" Association="practiceModel.FK__Missing__PMunici__6477ECF3">
+      <End Role="Municipality" EntitySet="Municipalities" />
+      <End Role="Missing" EntitySet="Missings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Missing__Religio__656C112C" Association="practiceModel.FK__Missing__Religio__656C112C">
+      <End Role="Religion" EntitySet="Religions" />
+      <End Role="Missing" EntitySet="Missings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Missing__TMunici__66603565" Association="practiceModel.FK__Missing__TMunici__66603565">
+      <End Role="Municipality" EntitySet="Municipalities" />
+      <End Role="Missing" EntitySet="Missings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Missing__UserId__6754599E" Association="practiceModel.FK__Missing__UserId__6754599E">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Missing" EntitySet="Missings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Municipal__MuniT__6A30C649" Association="practiceModel.FK__Municipal__MuniT__6A30C649">
+      <End Role="MunicipalityType" EntitySet="MunicipalityTypes" />
+      <End Role="Municipality" EntitySet="Municipalities" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Offices__OfficeT__6C190EBB" Association="practiceModel.FK__Offices__OfficeT__6C190EBB">
+      <End Role="OfficeType" EntitySet="OfficeTypes" />
+      <End Role="Office" EntitySet="Offices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RoleAcces__RoleI__6E01572D" Association="practiceModel.FK__RoleAcces__RoleI__6E01572D">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="RoleAccess" EntitySet="RoleAccesses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__RoleId__6EF57B66" Association="practiceModel.FK__Users__RoleId__6EF57B66">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <FunctionImport Name="spMissingMatches" ReturnType="Collection(practiceModel.spMissingMatches_Result)">
+      <Parameter Name="Fname" Mode="In" Type="String" />
+      <Parameter Name="Lname" Mode="In" Type="String" />
+      <Parameter Name="aliasName" Mode="In" Type="String" />
+      <Parameter Name="Dob" Mode="In" Type="DateTime" />
+      <Parameter Name="gender" Mode="In" Type="String" />
+      <Parameter Name="FatherName" Mode="In" Type="String" />
+      <Parameter Name="MotherName" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Colour">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ColourName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Missings" Relationship="practiceModel.FK__Missing__EyeColo__5EBF139D" FromRole="Colour" ToRole="Missing" />
+    <NavigationProperty Name="Missings1" Relationship="practiceModel.FK__Missing__HairCol__60A75C0F" FromRole="Colour" ToRole="Missing" />
+  </EntityType>
+  <EntityType Name="country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CountryNameNp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CountryCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="Nationality" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Missings" Relationship="practiceModel.FK__Missing__Nationa__628FA481" FromRole="country" ToRole="Missing" />
+  </EntityType>
+  <EntityType Name="Designation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="DesgName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DiplayOrder" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DistrictCode" Type="Int32" Nullable="false" />
+    <Property Name="DistrictNameEng" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DistrictNameNp" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="StateId" Type="Int32" />
+    <NavigationProperty Name="State" Relationship="practiceModel.FK__Districts__State__5CD6CB2B" FromRole="District" ToRole="State" />
+    <NavigationProperty Name="Municipalities" Relationship="practiceModel.FK__Municipal__DisId__693CA210" FromRole="District" ToRole="Municipality" />
+    <NavigationProperty Name="Offices" Relationship="practiceModel.FK__Offices__DisId__6B24EA82" FromRole="District" ToRole="Office" />
+  </EntityType>
+  <EntityType Name="EducationLevel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LevelName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="Missings" Relationship="practiceModel.FK__Missing__Educati__5DCAEF64" FromRole="EducationLevel" ToRole="Missing" />
+  </EntityType>
+  <EntityType Name="Ethnicity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EthnicityName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Missings" Relationship="practiceModel.fk_ethnicity_id" FromRole="Ethnicity" ToRole="Missing" />
+  </EntityType>
+  <EntityType Name="FiscalYear">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FiscalYearName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="StartDateNp" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="true" />
+    <Property Name="EndDateNp" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="true" />
+    <Property Name="CurrentFiscalYear" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Missings" Relationship="practiceModel.FK__Missing__FiscalY__5FB337D6" FromRole="FiscalYear" ToRole="Missing" />
+  </EntityType>
+  <EntityType Name="IdType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Missings" Relationship="practiceModel.FK__Missing__IdTypeI__619B8048" FromRole="IdType" ToRole="Missing" />
+  </EntityType>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Language1" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int32" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MenuDetails" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CssClass" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MenuLink" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <Property Name="Controller" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="RoleAccesses" Relationship="practiceModel.FK__RoleAcces__MenuI__6D0D32F4" FromRole="Menu" ToRole="RoleAccess" />
+  </EntityType>
+  <EntityType Name="Missing">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RegistrationNumber" Type="Int32" Nullable="false" />
+    <Property Name="OfficeId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="FiscalYearId" Type="Int32" />
+    <Property Name="VerifyUserId" Type="Int32" />
+    <Property Name="VerifyStatus" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="verifydate" Type="DateTime" Precision="0" />
+    <Property Name="VerifyMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EnteredDate" Type="DateTime" Precision="0" />
+    <Property Name="Fname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaritialStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EthnicityId" Type="Int32" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="PersonType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FatherName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MotherName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SpouseName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SpecialIdentifier" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NationalityId" Type="Int32" />
+    <Property Name="IdTypeId" Type="Int32" />
+    <Property Name="IdTypeNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReligionId" Type="Int32" />
+    <Property Name="Occupation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="EducationLevelId" Type="Int32" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="EstimatedAge" Type="Int32" />
+    <Property Name="Hieght" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Weight" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ClothesWorn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EyeColorId" Type="Int32" />
+    <Property Name="Hair" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HairColorId" Type="Int32" />
+    <Property Name="Build" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Language" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="TStateId" Type="Int32" />
+    <Property Name="TDistrictId" Type="Int32" />
+    <Property Name="TMunicipalityId" Type="Int32" />
+    <Property Name="TWardNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TToleName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TContactNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PStateId" Type="Int32" />
+    <Property Name="PDistrictId" Type="Int32" />
+    <Property Name="PMunicipalityId" Type="Int32" />
+    <Property Name="PWardNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PToleName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PContactNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LastSeenDate" Type="DateTime" Precision="0" />
+    <Property Name="LastSeenPlace" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LastSeenTime" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MStateId" Type="Int32" />
+    <Property Name="MDistrictId" Type="Int32" />
+    <Property Name="MMunicipalityId" Type="Int32" />
+    <Property Name="MWardNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MToleName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ComplainByName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="RelationWithVictim" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ComplainContactNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ComplainDate" Type="DateTime" Precision="0" />
+    <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PossiblePlaces" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MissingReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MissingStatus" Type="Byte" />
+    <Property Name="DateOfFound" Type="DateTime" Precision="0" />
+    <Property Name="FoundAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LiveStatus" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="FoundRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FoundByOfficeId" Type="Int32" />
+    <Property Name="HandOverTo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="HandOverDate" Type="DateTime" Precision="0" />
+    <Property Name="HandOverRelation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="HandOverDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HandOverContactNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LastSearchActivityDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Colour" Relationship="practiceModel.FK__Missing__EyeColo__5EBF139D" FromRole="Missing" ToRole="Colour" />
+    <NavigationProperty Name="Colour1" Relationship="practiceModel.FK__Missing__HairCol__60A75C0F" FromRole="Missing" ToRole="Colour" />
+    <NavigationProperty Name="country" Relationship="practiceModel.FK__Missing__Nationa__628FA481" FromRole="Missing" ToRole="country" />
+    <NavigationProperty Name="EducationLevel" Relationship="practiceModel.FK__Missing__Educati__5DCAEF64" FromRole="Missing" ToRole="EducationLevel" />
+    <NavigationProperty Name="Ethnicity" Relationship="practiceModel.fk_ethnicity_id" FromRole="Missing" ToRole="Ethnicity" />
+    <NavigationProperty Name="FiscalYear" Relationship="practiceModel.FK__Missing__FiscalY__5FB337D6" FromRole="Missing" ToRole="FiscalYear" />
+    <NavigationProperty Name="IdType" Relationship="practiceModel.FK__Missing__IdTypeI__619B8048" FromRole="Missing" ToRole="IdType" />
+    <NavigationProperty Name="Office" Relationship="practiceModel.FK__Missing__OfficeI__6383C8BA" FromRole="Missing" ToRole="Office" />
+    <NavigationProperty Name="Municipality" Relationship="practiceModel.FK__Missing__PMunici__6477ECF3" FromRole="Missing" ToRole="Municipality" />
+    <NavigationProperty Name="Religion" Relationship="practiceModel.FK__Missing__Religio__656C112C" FromRole="Missing" ToRole="Religion" />
+    <NavigationProperty Name="Municipality1" Relationship="practiceModel.FK__Missing__TMunici__66603565" FromRole="Missing" ToRole="Municipality" />
+    <NavigationProperty Name="User" Relationship="practiceModel.FK__Missing__UserId__6754599E" FromRole="Missing" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Municipality">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MunicipalityName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="MuniTypeId" Type="Int32" />
+    <Property Name="DisId" Type="Int32" />
+    <NavigationProperty Name="District" Relationship="practiceModel.FK__Municipal__DisId__693CA210" FromRole="Municipality" ToRole="District" />
+    <NavigationProperty Name="Missings" Relationship="practiceModel.FK__Missing__PMunici__6477ECF3" FromRole="Municipality" ToRole="Missing" />
+    <NavigationProperty Name="Missings1" Relationship="practiceModel.FK__Missing__TMunici__66603565" FromRole="Municipality" ToRole="Missing" />
+    <NavigationProperty Name="MunicipalityType" Relationship="practiceModel.FK__Municipal__MuniT__6A30C649" FromRole="Municipality" ToRole="MunicipalityType" />
+  </EntityType>
+  <EntityType Name="MunicipalityType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MuniType" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Municipalities" Relationship="practiceModel.FK__Municipal__MuniT__6A30C649" FromRole="MunicipalityType" ToRole="Municipality" />
+  </EntityType>
+  <EntityType Name="Office">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int32" Nullable="false" />
+    <Property Name="OfficeName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="OfficeCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="OfficeAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OfficePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OfficeEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="OfficeTypeId" Type="Int32" />
+    <Property Name="DisId" Type="Int32" />
+    <NavigationProperty Name="District" Relationship="practiceModel.FK__Offices__DisId__6B24EA82" FromRole="Office" ToRole="District" />
+    <NavigationProperty Name="Missings" Relationship="practiceModel.FK__Missing__OfficeI__6383C8BA" FromRole="Office" ToRole="Missing" />
+    <NavigationProperty Name="OfficeType" Relationship="practiceModel.FK__Offices__OfficeT__6C190EBB" FromRole="Office" ToRole="OfficeType" />
+  </EntityType>
+  <EntityType Name="OfficeType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OfficeTypeName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Offices" Relationship="practiceModel.FK__Offices__OfficeT__6C190EBB" FromRole="OfficeType" ToRole="Office" />
+  </EntityType>
+  <EntityType Name="Religion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReligionName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Missings" Relationship="practiceModel.FK__Missing__Religio__656C112C" FromRole="Religion" ToRole="Missing" />
+  </EntityType>
+  <EntityType Name="RoleAccess">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AllowAdd" Type="Boolean" Nullable="false" />
+    <Property Name="AllowEdit" Type="Boolean" Nullable="false" />
+    <Property Name="AllowDelete" Type="Boolean" Nullable="false" />
+    <Property Name="AllowView" Type="Boolean" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="MenuId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Menu" Relationship="practiceModel.FK__RoleAcces__MenuI__6D0D32F4" FromRole="RoleAccess" ToRole="Menu" />
+    <NavigationProperty Name="Role" Relationship="practiceModel.FK__RoleAcces__RoleI__6E01572D" FromRole="RoleAccess" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Detail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AccessAll" Type="Boolean" Nullable="false" />
+    <Property Name="RoleDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsPermanent" Type="Boolean" />
+    <NavigationProperty Name="RoleAccesses" Relationship="practiceModel.FK__RoleAcces__RoleI__6E01572D" FromRole="Role" ToRole="RoleAccess" />
+    <NavigationProperty Name="Users" Relationship="practiceModel.FK__Users__RoleId__6EF57B66" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Districts" Relationship="practiceModel.FK__Districts__State__5CD6CB2B" FromRole="State" ToRole="District" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LoginId" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
+    <Property Name="LoginCount" Type="Int32" />
+    <Property Name="LoginAttempt" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Missings" Relationship="practiceModel.FK__Missing__UserId__6754599E" FromRole="User" ToRole="Missing" />
+    <NavigationProperty Name="Role" Relationship="practiceModel.FK__Users__RoleId__6EF57B66" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="Photo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UploadedFileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="FilePath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="FileExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MissingId" Type="Int32" />
+  </EntityType>
+  <Association Name="FK__Missing__EyeColo__5EBF139D">
+    <End Type="practiceModel.Colour" Role="Colour" Multiplicity="0..1" />
+    <End Type="practiceModel.Missing" Role="Missing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Colour">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Missing">
+        <PropertyRef Name="EyeColorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Missing__HairCol__60A75C0F">
+    <End Type="practiceModel.Colour" Role="Colour" Multiplicity="0..1" />
+    <End Type="practiceModel.Missing" Role="Missing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Colour">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Missing">
+        <PropertyRef Name="HairColorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Missing__Nationa__628FA481">
+    <End Type="practiceModel.country" Role="country" Multiplicity="0..1" />
+    <End Type="practiceModel.Missing" Role="Missing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Missing">
+        <PropertyRef Name="NationalityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Districts__State__5CD6CB2B">
+    <End Type="practiceModel.State" Role="State" Multiplicity="0..1" />
+    <End Type="practiceModel.District" Role="District" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="District">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Municipal__DisId__693CA210">
+    <End Type="practiceModel.District" Role="District" Multiplicity="0..1" />
+    <End Type="practiceModel.Municipality" Role="Municipality" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Municipality">
+        <PropertyRef Name="DisId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Offices__DisId__6B24EA82">
+    <End Type="practiceModel.District" Role="District" Multiplicity="0..1" />
+    <End Type="practiceModel.Office" Role="Office" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Office">
+        <PropertyRef Name="DisId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Missing__Educati__5DCAEF64">
+    <End Type="practiceModel.EducationLevel" Role="EducationLevel" Multiplicity="0..1" />
+    <End Type="practiceModel.Missing" Role="Missing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EducationLevel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Missing">
+        <PropertyRef Name="EducationLevelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ethnicity_id">
+    <End Type="practiceModel.Ethnicity" Role="Ethnicity" Multiplicity="0..1" />
+    <End Type="practiceModel.Missing" Role="Missing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ethnicity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Missing">
+        <PropertyRef Name="EthnicityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Missing__FiscalY__5FB337D6">
+    <End Type="practiceModel.FiscalYear" Role="FiscalYear" Multiplicity="0..1" />
+    <End Type="practiceModel.Missing" Role="Missing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FiscalYear">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Missing">
+        <PropertyRef Name="FiscalYearId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Missing__IdTypeI__619B8048">
+    <End Type="practiceModel.IdType" Role="IdType" Multiplicity="0..1" />
+    <End Type="practiceModel.Missing" Role="Missing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Missing">
+        <PropertyRef Name="IdTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RoleAcces__MenuI__6D0D32F4">
+    <End Type="practiceModel.Menu" Role="Menu" Multiplicity="1" />
+    <End Type="practiceModel.RoleAccess" Role="RoleAccess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoleAccess">
+        <PropertyRef Name="MenuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Missing__OfficeI__6383C8BA">
+    <End Type="practiceModel.Office" Role="Office" Multiplicity="0..1" />
+    <End Type="practiceModel.Missing" Role="Missing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Office">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Missing">
+        <PropertyRef Name="OfficeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Missing__PMunici__6477ECF3">
+    <End Type="practiceModel.Municipality" Role="Municipality" Multiplicity="0..1" />
+    <End Type="practiceModel.Missing" Role="Missing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Municipality">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Missing">
+        <PropertyRef Name="PMunicipalityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Missing__Religio__656C112C">
+    <End Type="practiceModel.Religion" Role="Religion" Multiplicity="0..1" />
+    <End Type="practiceModel.Missing" Role="Missing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Religion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Missing">
+        <PropertyRef Name="ReligionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Missing__TMunici__66603565">
+    <End Type="practiceModel.Municipality" Role="Municipality" Multiplicity="0..1" />
+    <End Type="practiceModel.Missing" Role="Missing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Municipality">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Missing">
+        <PropertyRef Name="TMunicipalityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Missing__UserId__6754599E">
+    <End Type="practiceModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="practiceModel.Missing" Role="Missing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Missing">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Municipal__MuniT__6A30C649">
+    <End Type="practiceModel.MunicipalityType" Role="MunicipalityType" Multiplicity="0..1" />
+    <End Type="practiceModel.Municipality" Role="Municipality" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MunicipalityType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Municipality">
+        <PropertyRef Name="MuniTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Offices__OfficeT__6C190EBB">
+    <End Type="practiceModel.OfficeType" Role="OfficeType" Multiplicity="0..1" />
+    <End Type="practiceModel.Office" Role="Office" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfficeType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Office">
+        <PropertyRef Name="OfficeTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RoleAcces__RoleI__6E01572D">
+    <End Type="practiceModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="practiceModel.RoleAccess" Role="RoleAccess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="RoleAccess">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__RoleId__6EF57B66">
+    <End Type="practiceModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="practiceModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="spMissingMatches_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Fname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Photo" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ComplainByName" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="ComplainDate" Nullable="true" />
+    <Property Type="DateTime" Name="EnteredDate" Nullable="true" />
+    <Property Type="String" Name="OfficeName" Nullable="false" MaxLength="100" />
+  </ComplexType>
+</Schema>

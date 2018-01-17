@@ -22,7 +22,7 @@ namespace ApplicationService.Models
 
         [Required]
         [Display(Name = "Fiscal year")]
-        public int?FiscalYearId { get; set; }
+        public int? FiscalYearId { get; set; }
         public int?VerifyUserId { get; set; }
 
         [Display(Name ="Verify Status")]
@@ -55,7 +55,6 @@ namespace ApplicationService.Models
         public string MaritialStatus { get; set; }
 
         [Display(Name ="Ethnicity")]
-        [Required]
         public int?EthnicityId { get; set; }
 
         [Required]

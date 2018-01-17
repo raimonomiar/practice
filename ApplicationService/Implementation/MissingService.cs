@@ -31,6 +31,13 @@ namespace ApplicationService.Implementation
             unitOfWork.MissingRepository.Create(missing);
         }
 
+        public Missing AddMissing(MissingModel model)
+        {
+            var missing = Mapper.MissingMapper.MissingModelToMissing(model);
+
+           return unitOfWork.MissingRepository.Create(missing);
+        }
+
         public void Delete(object id)
         {
             unitOfWork.MissingRepository.Delete(id);
@@ -340,7 +347,6 @@ namespace ApplicationService.Implementation
                         DOB = x.DOB,
                         EstimatedAge = x.EstimatedAge,
                         Hieght = x.Hieght,
-                        HeightUnit = x.HeightUnit,
                         Weight = x.Weight,
                         ClothesWorn = x.ClothesWorn,
                         EyeColorId = x.EyeColorId,
@@ -495,7 +501,6 @@ namespace ApplicationService.Implementation
                         Dob = x.DOB,
                         EstimateAge = x.EstimatedAge,
                         Height = x.Hieght,
-                        HeightUnit = x.HeightUnit,
                         Weight = x.Weight,
                         ClothesWorn = x.ClothesWorn,
                         EyeColorId = x.EyeColorId,

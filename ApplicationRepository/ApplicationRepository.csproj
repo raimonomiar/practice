@@ -68,118 +68,117 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Colour.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="country.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Designation.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="District.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="EducationLevel.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Ethnicity.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="FiscalYear.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="IdType.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Language.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Menu.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Missing.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.edmx</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Municipality.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="MunicipalityType.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Office.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="OfficeType.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Photo.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="practiceEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>practiceEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="practiceEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="practiceEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>practiceEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Religion.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\RepositoryBase.cs" />
     <Compile Include="Role.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="RoleAccess.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="spMissingMatches_Result.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="State.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
     <Compile Include="User.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>practiceEntities.tt</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Model.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.cs</LastGenOutput>
-    </Content>
+    <EntityDeploy Include="practiceEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>practiceEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="practiceEntities.edmx.diagram">
+      <DependentUpon>practiceEntities.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="practiceEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>practiceEntities.edmx</DependentUpon>
+      <LastGenOutput>practiceEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="practiceEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>practiceEntities.edmx</DependentUpon>
+      <LastGenOutput>practiceEntities.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

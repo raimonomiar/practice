@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="practiceModelStoreContainer" CdmEntityContainer="practiceEntities">
+    <EntitySetMapping Name="Colours">
+      <EntityTypeMapping TypeName="practiceModel.Colour">
+        <MappingFragment StoreEntitySet="Colours">
+          <ScalarProperty Name="ColourName" ColumnName="ColourName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="countries">
+      <EntityTypeMapping TypeName="practiceModel.country">
+        <MappingFragment StoreEntitySet="countries">
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="CountryNameNp" ColumnName="CountryNameNp" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Designations">
+      <EntityTypeMapping TypeName="practiceModel.Designation">
+        <MappingFragment StoreEntitySet="Designations">
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="DiplayOrder" ColumnName="DiplayOrder" />
+          <ScalarProperty Name="DesgName" ColumnName="DesgName" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Districts">
+      <EntityTypeMapping TypeName="practiceModel.District">
+        <MappingFragment StoreEntitySet="Districts">
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="DistrictNameNp" ColumnName="DistrictNameNp" />
+          <ScalarProperty Name="DistrictNameEng" ColumnName="DistrictNameEng" />
+          <ScalarProperty Name="DistrictCode" ColumnName="DistrictCode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EducationLevels">
+      <EntityTypeMapping TypeName="practiceModel.EducationLevel">
+        <MappingFragment StoreEntitySet="EducationLevels">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="LevelName" ColumnName="LevelName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ethnicities">
+      <EntityTypeMapping TypeName="practiceModel.Ethnicity">
+        <MappingFragment StoreEntitySet="Ethnicity">
+          <ScalarProperty Name="EthnicityName" ColumnName="EthnicityName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FiscalYears">
+      <EntityTypeMapping TypeName="practiceModel.FiscalYear">
+        <MappingFragment StoreEntitySet="FiscalYears">
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CurrentFiscalYear" ColumnName="CurrentFiscalYear" />
+          <ScalarProperty Name="EndDateNp" ColumnName="EndDateNp" />
+          <ScalarProperty Name="StartDateNp" ColumnName="StartDateNp" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="FiscalYearName" ColumnName="FiscalYearName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IdTypes">
+      <EntityTypeMapping TypeName="practiceModel.IdType">
+        <MappingFragment StoreEntitySet="IdType">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IdTypeName" ColumnName="IdTypeName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Languages">
+      <EntityTypeMapping TypeName="practiceModel.Language">
+        <MappingFragment StoreEntitySet="Language">
+          <ScalarProperty Name="Language1" ColumnName="Language" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menus">
+      <EntityTypeMapping TypeName="practiceModel.Menu">
+        <MappingFragment StoreEntitySet="Menu">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+          <ScalarProperty Name="Controller" ColumnName="Controller" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="MenuLink" ColumnName="MenuLink" />
+          <ScalarProperty Name="CssClass" ColumnName="CssClass" />
+          <ScalarProperty Name="MenuDetails" ColumnName="MenuDetails" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Missings">
+      <EntityTypeMapping TypeName="practiceModel.Missing">
+        <MappingFragment StoreEntitySet="Missing">
+          <ScalarProperty Name="LastSearchActivityDate" ColumnName="LastSearchActivityDate" />
+          <ScalarProperty Name="HandOverContactNumber" ColumnName="HandOverContactNumber" />
+          <ScalarProperty Name="HandOverDetails" ColumnName="HandOverDetails" />
+          <ScalarProperty Name="HandOverRelation" ColumnName="HandOverRelation" />
+          <ScalarProperty Name="HandOverDate" ColumnName="HandOverDate" />
+          <ScalarProperty Name="HandOverTo" ColumnName="HandOverTo" />
+          <ScalarProperty Name="FoundByOfficeId" ColumnName="FoundByOfficeId" />
+          <ScalarProperty Name="FoundRemarks" ColumnName="FoundRemarks" />
+          <ScalarProperty Name="LiveStatus" ColumnName="LiveStatus" />
+          <ScalarProperty Name="FoundAddress" ColumnName="FoundAddress" />
+          <ScalarProperty Name="DateOfFound" ColumnName="DateOfFound" />
+          <ScalarProperty Name="MissingStatus" ColumnName="MissingStatus" />
+          <ScalarProperty Name="MissingReason" ColumnName="MissingReason" />
+          <ScalarProperty Name="PossiblePlaces" ColumnName="PossiblePlaces" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="ComplainDate" ColumnName="ComplainDate" />
+          <ScalarProperty Name="ComplainContactNumber" ColumnName="ComplainContactNumber" />
+          <ScalarProperty Name="RelationWithVictim" ColumnName="RelationWithVictim" />
+          <ScalarProperty Name="ComplainByName" ColumnName="ComplainByName" />
+          <ScalarProperty Name="MToleName" ColumnName="MToleName" />
+          <ScalarProperty Name="MWardNumber" ColumnName="MWardNumber" />
+          <ScalarProperty Name="MMunicipalityId" ColumnName="MMunicipalityId" />
+          <ScalarProperty Name="MDistrictId" ColumnName="MDistrictId" />
+          <ScalarProperty Name="MStateId" ColumnName="MStateId" />
+          <ScalarProperty Name="LastSeenTime" ColumnName="LastSeenTime" />
+          <ScalarProperty Name="LastSeenPlace" ColumnName="LastSeenPlace" />
+          <ScalarProperty Name="LastSeenDate" ColumnName="LastSeenDate" />
+          <ScalarProperty Name="PContactNumber" ColumnName="PContactNumber" />
+          <ScalarProperty Name="PToleName" ColumnName="PToleName" />
+          <ScalarProperty Name="PWardNumber" ColumnName="PWardNumber" />
+          <ScalarProperty Name="PMunicipalityId" ColumnName="PMunicipalityId" />
+          <ScalarProperty Name="PDistrictId" ColumnName="PDistrictId" />
+          <ScalarProperty Name="PStateId" ColumnName="PStateId" />
+          <ScalarProperty Name="TContactNumber" ColumnName="TContactNumber" />
+          <ScalarProperty Name="TToleName" ColumnName="TToleName" />
+          <ScalarProperty Name="TWardNumber" ColumnName="TWardNumber" />
+          <ScalarProperty Name="TMunicipalityId" ColumnName="TMunicipalityId" />
+          <ScalarProperty Name="TDistrictId" ColumnName="TDistrictId" />
+          <ScalarProperty Name="TStateId" ColumnName="TStateId" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="Build" ColumnName="Build" />
+          <ScalarProperty Name="HairColorId" ColumnName="HairColorId" />
+          <ScalarProperty Name="Hair" ColumnName="Hair" />
+          <ScalarProperty Name="EyeColorId" ColumnName="EyeColorId" />
+          <ScalarProperty Name="ClothesWorn" ColumnName="ClothesWorn" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Hieght" ColumnName="Hieght" />
+          <ScalarProperty Name="EstimatedAge" ColumnName="EstimatedAge" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="EducationLevelId" ColumnName="EducationLevelId" />
+          <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+          <ScalarProperty Name="ReligionId" ColumnName="ReligionId" />
+          <ScalarProperty Name="IdTypeNumber" ColumnName="IdTypeNumber" />
+          <ScalarProperty Name="IdTypeId" ColumnName="IdTypeId" />
+          <ScalarProperty Name="NationalityId" ColumnName="NationalityId" />
+          <ScalarProperty Name="SpecialIdentifier" ColumnName="SpecialIdentifier" />
+          <ScalarProperty Name="SpouseName" ColumnName="SpouseName" />
+          <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+          <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+          <ScalarProperty Name="PersonType" ColumnName="PersonType" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="EthnicityId" ColumnName="EthnicityId" />
+          <ScalarProperty Name="MaritialStatus" ColumnName="MaritialStatus" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="EnteredDate" ColumnName="EnteredDate" />
+          <ScalarProperty Name="VerifyMessage" ColumnName="VerifyMessage" />
+          <ScalarProperty Name="verifydate" ColumnName="verifydate" />
+          <ScalarProperty Name="VerifyStatus" ColumnName="VerifyStatus" />
+          <ScalarProperty Name="VerifyUserId" ColumnName="VerifyUserId" />
+          <ScalarProperty Name="FiscalYearId" ColumnName="FiscalYearId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+          <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Municipalities">
+      <EntityTypeMapping TypeName="practiceModel.Municipality">
+        <MappingFragment StoreEntitySet="Municipalities">
+          <ScalarProperty Name="DisId" ColumnName="DisId" />
+          <ScalarProperty Name="MuniTypeId" ColumnName="MuniTypeId" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="MunicipalityName" ColumnName="MunicipalityName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MunicipalityTypes">
+      <EntityTypeMapping TypeName="practiceModel.MunicipalityType">
+        <MappingFragment StoreEntitySet="MunicipalityType">
+          <ScalarProperty Name="MuniType" ColumnName="MuniType" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Offices">
+      <EntityTypeMapping TypeName="practiceModel.Office">
+        <MappingFragment StoreEntitySet="Offices">
+          <ScalarProperty Name="DisId" ColumnName="DisId" />
+          <ScalarProperty Name="OfficeTypeId" ColumnName="OfficeTypeId" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OfficeEmail" ColumnName="OfficeEmail" />
+          <ScalarProperty Name="OfficePhone" ColumnName="OfficePhone" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+          <ScalarProperty Name="OfficeCode" ColumnName="OfficeCode" />
+          <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfficeTypes">
+      <EntityTypeMapping TypeName="practiceModel.OfficeType">
+        <MappingFragment StoreEntitySet="OfficeTypes">
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="OfficeTypeName" ColumnName="OfficeTypeName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Religions">
+      <EntityTypeMapping TypeName="practiceModel.Religion">
+        <MappingFragment StoreEntitySet="Religions">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ReligionName" ColumnName="ReligionName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleAccesses">
+      <EntityTypeMapping TypeName="practiceModel.RoleAccess">
+        <MappingFragment StoreEntitySet="RoleAccess">
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="AllowView" ColumnName="AllowView" />
+          <ScalarProperty Name="AllowDelete" ColumnName="AllowDelete" />
+          <ScalarProperty Name="AllowEdit" ColumnName="AllowEdit" />
+          <ScalarProperty Name="AllowAdd" ColumnName="AllowAdd" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="practiceModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="IsPermanent" ColumnName="IsPermanent" />
+          <ScalarProperty Name="RoleDetails" ColumnName="RoleDetails" />
+          <ScalarProperty Name="AccessAll" ColumnName="AccessAll" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="States">
+      <EntityTypeMapping TypeName="practiceModel.State">
+        <MappingFragment StoreEntitySet="States">
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="practiceModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LoginAttempt" ColumnName="LoginAttempt" />
+          <ScalarProperty Name="LoginCount" ColumnName="LoginCount" />
+          <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Photos">
+      <EntityTypeMapping TypeName="practiceModel.Photo">
+        <MappingFragment StoreEntitySet="Photos">
+          <ScalarProperty Name="MissingId" ColumnName="MissingId" />
+          <ScalarProperty Name="FileExtension" ColumnName="FileExtension" />
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="UploadedFileName" ColumnName="UploadedFileName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spMissingMatches" FunctionName="practiceModel.Store.spMissingMatches">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="practiceModel.spMissingMatches_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="ComplainByName" ColumnName="ComplainByName" />
+          <ScalarProperty Name="ComplainDate" ColumnName="ComplainDate" />
+          <ScalarProperty Name="EnteredDate" ColumnName="EnteredDate" />
+          <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
