@@ -85,3 +85,7 @@ E:\Ayush\Practice\ApplicationService\bin\Debug\System.Web.WebPages.Razor.xml
 E:\Ayush\Practice\ApplicationService\obj\Debug\ApplicationService.csprojResolveAssemblyReference.cache
 E:\Ayush\Practice\ApplicationService\obj\Debug\ApplicationService.dll
 E:\Ayush\Practice\ApplicationService\obj\Debug\ApplicationService.pdb
+D:\Ayush\practice\ApplicationService\obj\Debug\ApplicationService.csprojResolveAssemblyReference.cache
+D:\Ayush\practice\ApplicationService\obj\Debug\ApplicationService.csproj.CoreCompileInputs.cache
+D:\Ayush\practice\ApplicationService\obj\Debug\ApplicationService.dll
+D:\Ayush\practice\ApplicationService\obj\Debug\ApplicationService.pdb
