@@ -109,6 +109,8 @@ namespace ApplicationService.Implementation
                 if (result !=null)
                 {
                     result.RoleId = model.RoleId;
+                    result.DesgId = model.DesignationId;
+                    result.OfficeId = model.OfficeId;
                     result.Username = model.Username ?? result.Username;
                     result.LoginId = model.LoginId ?? result.LoginId;
                     result.UpdatedDate = model.UpdatedDate;

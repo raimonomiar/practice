@@ -75,7 +75,7 @@ namespace WebProject.Controllers
                     return View(model);
                 }
 
-                if (Request.Form["yes"] == "yes" || !model.IsMatches)
+                    if (Request.Form["yes"] == "yes" || !model.IsMatches)
                 {
                     try
                     {

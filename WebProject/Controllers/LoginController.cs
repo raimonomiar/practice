@@ -64,7 +64,7 @@ namespace WebProject.Controllers
                         new Claim(ClaimTypes.Email, auth.EmailAddress),
                         new Claim(ClaimTypes.Role,auth.RoleName),
                         new Claim("RoleId", auth.RoleId.ToString()),
-                        new Claim("OfficeId", auth.OfficeId.ToString()),
+                        new Claim("OfficeId", auth.Office.Id.ToString()),
                         new Claim("UserId", auth.UserId.ToString())
                     },
                     "ApplicationCookie");
@@ -77,7 +77,7 @@ namespace WebProject.Controllers
 
                     Session["UserId"] = auth.UserId;
                     Session["RoleId"] = auth.RoleId;
-                    Session["OfficeId"] = auth.OfficeId;
+                    Session["OfficeId"] = auth.Office.Id;
 
                     return Redirect(GetRedirectUrl(userModel.ReturnUrl));
                 }

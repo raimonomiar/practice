@@ -1,6 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="practiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="practiceEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="spMissingMatches" ReturnType="Collection(practiceModel.spMissingMatches_Result)">
+      <Parameter Name="Fname" Mode="In" Type="String" />
+      <Parameter Name="Lname" Mode="In" Type="String" />
+      <Parameter Name="aliasName" Mode="In" Type="String" />
+      <Parameter Name="Dob" Mode="In" Type="DateTime" />
+      <Parameter Name="gender" Mode="In" Type="String" />
+      <Parameter Name="FatherName" Mode="In" Type="String" />
+      <Parameter Name="MotherName" Mode="In" Type="String" />
+    </FunctionImport>
     <EntitySet Name="Colours" EntityType="practiceModel.Colour" />
     <EntitySet Name="countries" EntityType="practiceModel.country" />
     <EntitySet Name="Designations" EntityType="practiceModel.Designation" />
@@ -33,6 +42,10 @@
     <AssociationSet Name="FK__Missing__Nationa__628FA481" Association="practiceModel.FK__Missing__Nationa__628FA481">
       <End Role="country" EntitySet="countries" />
       <End Role="Missing" EntitySet="Missings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__DesgId__02084FDA" Association="practiceModel.FK__Users__DesgId__02084FDA">
+      <End Role="Designation" EntitySet="Designations" />
+      <End Role="User" EntitySet="Users" />
     </AssociationSet>
     <AssociationSet Name="FK__Districts__State__5CD6CB2B" Association="practiceModel.FK__Districts__State__5CD6CB2B">
       <End Role="State" EntitySet="States" />
@@ -94,6 +107,10 @@
       <End Role="OfficeType" EntitySet="OfficeTypes" />
       <End Role="Office" EntitySet="Offices" />
     </AssociationSet>
+    <AssociationSet Name="FK__Users__OfficeId__01142BA1" Association="practiceModel.FK__Users__OfficeId__01142BA1">
+      <End Role="Office" EntitySet="Offices" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
     <AssociationSet Name="FK__RoleAcces__RoleI__6E01572D" Association="practiceModel.FK__RoleAcces__RoleI__6E01572D">
       <End Role="Role" EntitySet="Roles" />
       <End Role="RoleAccess" EntitySet="RoleAccesses" />
@@ -102,16 +119,17 @@
       <End Role="Role" EntitySet="Roles" />
       <End Role="User" EntitySet="Users" />
     </AssociationSet>
-    <FunctionImport Name="spMissingMatches" ReturnType="Collection(practiceModel.spMissingMatches_Result)">
-      <Parameter Name="Fname" Mode="In" Type="String" />
-      <Parameter Name="Lname" Mode="In" Type="String" />
-      <Parameter Name="aliasName" Mode="In" Type="String" />
-      <Parameter Name="Dob" Mode="In" Type="DateTime" />
-      <Parameter Name="gender" Mode="In" Type="String" />
-      <Parameter Name="FatherName" Mode="In" Type="String" />
-      <Parameter Name="MotherName" Mode="In" Type="String" />
-    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="spMissingMatches_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Fname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Photo" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ComplainByName" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="ComplainDate" Nullable="true" />
+    <Property Type="DateTime" Name="EnteredDate" Nullable="true" />
+    <Property Type="String" Name="OfficeName" Nullable="false" MaxLength="100" />
+  </ComplexType>
   <EntityType Name="Colour">
     <Key>
       <PropertyRef Name="id" />
@@ -142,6 +160,7 @@
     <Property Name="DiplayOrder" Type="Int32" />
     <Property Name="CreatedDate" Type="DateTime" Precision="3" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Users" Relationship="practiceModel.FK__Users__DesgId__02084FDA" FromRole="Designation" ToRole="User" />
   </EntityType>
   <EntityType Name="District">
     <Key>
@@ -357,6 +376,7 @@
     <NavigationProperty Name="District" Relationship="practiceModel.FK__Offices__DisId__6B24EA82" FromRole="Office" ToRole="District" />
     <NavigationProperty Name="Missings" Relationship="practiceModel.FK__Missing__OfficeI__6383C8BA" FromRole="Office" ToRole="Missing" />
     <NavigationProperty Name="OfficeType" Relationship="practiceModel.FK__Offices__OfficeT__6C190EBB" FromRole="Office" ToRole="OfficeType" />
+    <NavigationProperty Name="Users" Relationship="practiceModel.FK__Users__OfficeId__01142BA1" FromRole="Office" ToRole="User" />
   </EntityType>
   <EntityType Name="OfficeType">
     <Key>
@@ -428,7 +448,11 @@
     <Property Name="LoginAttempt" Type="Int32" />
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="OfficeId" Type="Int32" />
+    <Property Name="DesgId" Type="Int32" />
+    <NavigationProperty Name="Designation" Relationship="practiceModel.FK__Users__DesgId__02084FDA" FromRole="User" ToRole="Designation" />
     <NavigationProperty Name="Missings" Relationship="practiceModel.FK__Missing__UserId__6754599E" FromRole="User" ToRole="Missing" />
+    <NavigationProperty Name="Office" Relationship="practiceModel.FK__Users__OfficeId__01142BA1" FromRole="User" ToRole="Office" />
     <NavigationProperty Name="Role" Relationship="practiceModel.FK__Users__RoleId__6EF57B66" FromRole="User" ToRole="Role" />
   </EntityType>
   <EntityType Name="Photo">
@@ -474,6 +498,18 @@
       </Principal>
       <Dependent Role="Missing">
         <PropertyRef Name="NationalityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__DesgId__02084FDA">
+    <End Type="practiceModel.Designation" Role="Designation" Multiplicity="0..1" />
+    <End Type="practiceModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Designation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="DesgId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -657,6 +693,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Users__OfficeId__01142BA1">
+    <End Type="practiceModel.Office" Role="Office" Multiplicity="0..1" />
+    <End Type="practiceModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Office">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="OfficeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__RoleAcces__RoleI__6E01572D">
     <End Type="practiceModel.Role" Role="Role" Multiplicity="1" />
     <End Type="practiceModel.RoleAccess" Role="RoleAccess" Multiplicity="*" />
@@ -681,14 +729,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <ComplexType Name="spMissingMatches_Result">
-    <Property Type="Int32" Name="Id" Nullable="false" />
-    <Property Type="String" Name="Fname" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Photo" Nullable="true" MaxLength="255" />
-    <Property Type="String" Name="ComplainByName" Nullable="true" MaxLength="255" />
-    <Property Type="DateTime" Name="ComplainDate" Nullable="true" />
-    <Property Type="DateTime" Name="EnteredDate" Nullable="true" />
-    <Property Type="String" Name="OfficeName" Nullable="false" MaxLength="100" />
-  </ComplexType>
 </Schema>

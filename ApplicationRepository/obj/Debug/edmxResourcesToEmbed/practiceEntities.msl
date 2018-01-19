@@ -1,6 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="practiceModelStoreContainer" CdmEntityContainer="practiceEntities">
+    <FunctionImportMapping FunctionImportName="spMissingMatches" FunctionName="practiceModel.Store.spMissingMatches">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="practiceModel.spMissingMatches_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="ComplainByName" ColumnName="ComplainByName" />
+          <ScalarProperty Name="ComplainDate" ColumnName="ComplainDate" />
+          <ScalarProperty Name="EnteredDate" ColumnName="EnteredDate" />
+          <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <EntitySetMapping Name="Colours">
       <EntityTypeMapping TypeName="practiceModel.Colour">
         <MappingFragment StoreEntitySet="Colours">
@@ -285,6 +299,8 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="practiceModel.User">
         <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="DesgId" ColumnName="DesgId" />
+          <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
           <ScalarProperty Name="RoleId" ColumnName="RoleId" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="LoginAttempt" ColumnName="LoginAttempt" />
@@ -311,19 +327,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="spMissingMatches" FunctionName="practiceModel.Store.spMissingMatches">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="practiceModel.spMissingMatches_Result">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Fname" ColumnName="Fname" />
-          <ScalarProperty Name="Lname" ColumnName="Lname" />
-          <ScalarProperty Name="Photo" ColumnName="Photo" />
-          <ScalarProperty Name="ComplainByName" ColumnName="ComplainByName" />
-          <ScalarProperty Name="ComplainDate" ColumnName="ComplainDate" />
-          <ScalarProperty Name="EnteredDate" ColumnName="EnteredDate" />
-          <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

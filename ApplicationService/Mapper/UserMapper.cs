@@ -25,8 +25,10 @@ namespace ApplicationService.Mapper
                 Password = userModel.Password,
                 RoleId = userModel.RoleId,
                 UpdatedDate = userModel.UpdatedDate,
-                Username = userModel.Username
-
+                Username = userModel.Username,
+                OfficeId = userModel.OfficeId,
+                DesgId = userModel.DesignationId
+                
 
             };
 
@@ -49,7 +51,19 @@ namespace ApplicationService.Mapper
                 RoleId = user.RoleId,
                 RoleName= user.Role.Name,
                 UpdatedDate = user.UpdatedDate,
-                Username = user.Username
+                Username = user.Username,
+                DesignationId = user.DesgId,
+                OfficeId= user.OfficeId,
+                Designation = new DesignationModel
+                {
+                    Id = Convert.ToInt32(user.DesgId),
+                    DesgName =  user.Designation.DesgName
+                },
+                Office = new OfficeModel
+                {
+                    Id = Convert.ToInt32(user.OfficeId),
+                    OfficeName = user.Office.OfficeName
+                }
             };
 
             return users;
@@ -73,7 +87,19 @@ namespace ApplicationService.Mapper
                         Password = item.Password,
                         RoleId = item.RoleId,
                         UpdatedDate = item.UpdatedDate,
-                        Username = item.Username
+                        Username = item.Username,
+                        DesignationId = item.DesgId,
+                        OfficeId = item.OfficeId,
+                        Designation = new DesignationModel
+                        {
+                            Id = Convert.ToInt32(item.DesgId),
+                            DesgName = item.Designation.DesgName
+                        },
+                        Office = new OfficeModel
+                        {
+                            Id = Convert.ToInt32(item.OfficeId),
+                            OfficeName = item.Office.OfficeName
+                        }
                     };
 
                     userModelList.Add(userModel);

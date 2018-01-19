@@ -295,6 +295,8 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
           <Property Name="LoginAttempt" Type="int" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="OfficeId" Type="int" />
+          <Property Name="DesgId" Type="int" />
         </EntityType>
         <Association Name="FK__Districts__State__5CD6CB2B">
           <End Role="States" Type="Self.States" Multiplicity="0..1" />
@@ -512,6 +514,30 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Users__DesgId__02084FDA">
+          <End Role="Designations" Type="Self.Designations" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Designations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="DesgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__OfficeId__01142BA1">
+          <End Role="Offices" Type="Self.Offices" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Users__RoleId__6EF57B66">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -647,6 +673,14 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
             <End Role="Roles" EntitySet="Roles" />
             <End Role="RoleAccess" EntitySet="RoleAccess" />
           </AssociationSet>
+          <AssociationSet Name="FK__Users__DesgId__02084FDA" Association="Self.FK__Users__DesgId__02084FDA">
+            <End Role="Designations" EntitySet="Designations" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__OfficeId__01142BA1" Association="Self.FK__Users__OfficeId__01142BA1">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
           <AssociationSet Name="FK__Users__RoleId__6EF57B66" Association="Self.FK__Users__RoleId__6EF57B66">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
@@ -661,6 +695,15 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
     <edmx:ConceptualModels>
       <Schema Namespace="practiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="practiceEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="spMissingMatches" ReturnType="Collection(practiceModel.spMissingMatches_Result)">
+            <Parameter Name="Fname" Mode="In" Type="String" />
+            <Parameter Name="Lname" Mode="In" Type="String" />
+            <Parameter Name="aliasName" Mode="In" Type="String" />
+            <Parameter Name="Dob" Mode="In" Type="DateTime" />
+            <Parameter Name="gender" Mode="In" Type="String" />
+            <Parameter Name="FatherName" Mode="In" Type="String" />
+            <Parameter Name="MotherName" Mode="In" Type="String" />
+          </FunctionImport>
           <EntitySet Name="Colours" EntityType="practiceModel.Colour" />
           <EntitySet Name="countries" EntityType="practiceModel.country" />
           <EntitySet Name="Designations" EntityType="practiceModel.Designation" />
@@ -693,6 +736,10 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
           <AssociationSet Name="FK__Missing__Nationa__628FA481" Association="practiceModel.FK__Missing__Nationa__628FA481">
             <End Role="country" EntitySet="countries" />
             <End Role="Missing" EntitySet="Missings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__DesgId__02084FDA" Association="practiceModel.FK__Users__DesgId__02084FDA">
+            <End Role="Designation" EntitySet="Designations" />
+            <End Role="User" EntitySet="Users" />
           </AssociationSet>
           <AssociationSet Name="FK__Districts__State__5CD6CB2B" Association="practiceModel.FK__Districts__State__5CD6CB2B">
             <End Role="State" EntitySet="States" />
@@ -754,6 +801,10 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
             <End Role="OfficeType" EntitySet="OfficeTypes" />
             <End Role="Office" EntitySet="Offices" />
           </AssociationSet>
+          <AssociationSet Name="FK__Users__OfficeId__01142BA1" Association="practiceModel.FK__Users__OfficeId__01142BA1">
+            <End Role="Office" EntitySet="Offices" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
           <AssociationSet Name="FK__RoleAcces__RoleI__6E01572D" Association="practiceModel.FK__RoleAcces__RoleI__6E01572D">
             <End Role="Role" EntitySet="Roles" />
             <End Role="RoleAccess" EntitySet="RoleAccesses" />
@@ -762,16 +813,17 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
             <End Role="Role" EntitySet="Roles" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
-          <FunctionImport Name="spMissingMatches" ReturnType="Collection(practiceModel.spMissingMatches_Result)">
-            <Parameter Name="Fname" Mode="In" Type="String" />
-            <Parameter Name="Lname" Mode="In" Type="String" />
-            <Parameter Name="aliasName" Mode="In" Type="String" />
-            <Parameter Name="Dob" Mode="In" Type="DateTime" />
-            <Parameter Name="gender" Mode="In" Type="String" />
-            <Parameter Name="FatherName" Mode="In" Type="String" />
-            <Parameter Name="MotherName" Mode="In" Type="String" />
-          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="spMissingMatches_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Fname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Photo" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="ComplainByName" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="ComplainDate" Nullable="true" />
+          <Property Type="DateTime" Name="EnteredDate" Nullable="true" />
+          <Property Type="String" Name="OfficeName" Nullable="false" MaxLength="100" />
+        </ComplexType>
         <EntityType Name="Colour">
           <Key>
             <PropertyRef Name="id" />
@@ -802,6 +854,7 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
           <Property Name="DiplayOrder" Type="Int32" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Users" Relationship="practiceModel.FK__Users__DesgId__02084FDA" FromRole="Designation" ToRole="User" />
         </EntityType>
         <EntityType Name="District">
           <Key>
@@ -1017,6 +1070,7 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
           <NavigationProperty Name="District" Relationship="practiceModel.FK__Offices__DisId__6B24EA82" FromRole="Office" ToRole="District" />
           <NavigationProperty Name="Missings" Relationship="practiceModel.FK__Missing__OfficeI__6383C8BA" FromRole="Office" ToRole="Missing" />
           <NavigationProperty Name="OfficeType" Relationship="practiceModel.FK__Offices__OfficeT__6C190EBB" FromRole="Office" ToRole="OfficeType" />
+          <NavigationProperty Name="Users" Relationship="practiceModel.FK__Users__OfficeId__01142BA1" FromRole="Office" ToRole="User" />
         </EntityType>
         <EntityType Name="OfficeType">
           <Key>
@@ -1088,7 +1142,11 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
           <Property Name="LoginAttempt" Type="Int32" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="OfficeId" Type="Int32" />
+          <Property Name="DesgId" Type="Int32" />
+          <NavigationProperty Name="Designation" Relationship="practiceModel.FK__Users__DesgId__02084FDA" FromRole="User" ToRole="Designation" />
           <NavigationProperty Name="Missings" Relationship="practiceModel.FK__Missing__UserId__6754599E" FromRole="User" ToRole="Missing" />
+          <NavigationProperty Name="Office" Relationship="practiceModel.FK__Users__OfficeId__01142BA1" FromRole="User" ToRole="Office" />
           <NavigationProperty Name="Role" Relationship="practiceModel.FK__Users__RoleId__6EF57B66" FromRole="User" ToRole="Role" />
         </EntityType>
         <EntityType Name="Photo">
@@ -1134,6 +1192,18 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
             </Principal>
             <Dependent Role="Missing">
               <PropertyRef Name="NationalityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__DesgId__02084FDA">
+          <End Type="practiceModel.Designation" Role="Designation" Multiplicity="0..1" />
+          <End Type="practiceModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Designation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="DesgId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1317,6 +1387,18 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Users__OfficeId__01142BA1">
+          <End Type="practiceModel.Office" Role="Office" Multiplicity="0..1" />
+          <End Type="practiceModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Office">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__RoleAcces__RoleI__6E01572D">
           <End Type="practiceModel.Role" Role="Role" Multiplicity="1" />
           <End Type="practiceModel.RoleAccess" Role="RoleAccess" Multiplicity="*" />
@@ -1341,22 +1423,26 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="spMissingMatches_Result">
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="String" Name="Fname" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Photo" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="ComplainByName" Nullable="true" MaxLength="255" />
-          <Property Type="DateTime" Name="ComplainDate" Nullable="true" />
-          <Property Type="DateTime" Name="EnteredDate" Nullable="true" />
-          <Property Type="String" Name="OfficeName" Nullable="false" MaxLength="100" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="practiceModelStoreContainer" CdmEntityContainer="practiceEntities" >
+          <FunctionImportMapping FunctionImportName="spMissingMatches" FunctionName="practiceModel.Store.spMissingMatches">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="practiceModel.spMissingMatches_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="ComplainByName" ColumnName="ComplainByName" />
+                <ScalarProperty Name="ComplainDate" ColumnName="ComplainDate" />
+                <ScalarProperty Name="EnteredDate" ColumnName="EnteredDate" />
+                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <EntitySetMapping Name="Colours">
             <EntityTypeMapping TypeName="practiceModel.Colour">
               <MappingFragment StoreEntitySet="Colours">
@@ -1641,6 +1727,8 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="practiceModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="DesgId" ColumnName="DesgId" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="LoginAttempt" ColumnName="LoginAttempt" />
@@ -1667,20 +1755,6 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="spMissingMatches" FunctionName="practiceModel.Store.spMissingMatches">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="practiceModel.spMissingMatches_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Fname" ColumnName="Fname" />
-                <ScalarProperty Name="Lname" ColumnName="Lname" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="ComplainByName" ColumnName="ComplainByName" />
-                <ScalarProperty Name="ComplainDate" ColumnName="ComplainDate" />
-                <ScalarProperty Name="EnteredDate" ColumnName="EnteredDate" />
-                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
