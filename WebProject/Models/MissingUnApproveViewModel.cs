@@ -23,6 +23,8 @@ namespace WebProject.Models
 
         public int? MissingCount { get; set; }
 
+        public int? FiscalYearId { get; set; }
+
 
     }
 }

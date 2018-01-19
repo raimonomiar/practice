@@ -1,4 +1,5 @@
-﻿using ApplicationService.Models;
+﻿using ApplicationRepository;
+using ApplicationService.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace ApplicationService.Interface
 {
     public interface IMissingService : IAllService<MissingModel>
     {
+
+        Missing AddMissing(MissingModel model);
         MissingModel GetOneMissingModel(object id);
 
         List<MissingModel> GetAllMissingModels(MissingModel model);
