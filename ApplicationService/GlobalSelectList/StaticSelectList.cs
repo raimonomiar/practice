@@ -10,27 +10,27 @@ namespace ApplicationService.GlobalSelectList
 {
     public class StaticSelectList
     {
-        public static List<SelectListItem> GenderList([Optional] int genderId) =>
+        public static List<SelectListItem> GenderList([Optional] string gender) =>
             new List<SelectListItem>
             {
                 new SelectListItem
                 {
-                    Value ="1",
+                    Value ="Male",
                     Text = "Male",
-                    Selected= genderId == 1
+                    Selected= gender == "Male"
 
                 },
                 new SelectListItem
                 {
-                    Value="2",
+                    Value="Female",
                     Text="Female",
-                    Selected= genderId == 2
+                    Selected= gender == "Female"
                 },
                 new SelectListItem
                 {
-                    Value = "3",
+                    Value = "Others",
                     Text="Others",
-                    Selected= genderId == 3
+                    Selected= gender == "Others"
                 }
             };
     }

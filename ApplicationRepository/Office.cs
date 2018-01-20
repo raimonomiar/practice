@@ -18,6 +18,7 @@ namespace ApplicationRepository
         public Office()
         {
             this.Missings = new HashSet<Missing>();
+            this.Users = new HashSet<User>();
         }
     
         public int Id { get; set; }
@@ -37,5 +38,7 @@ namespace ApplicationRepository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Missing> Missings { get; set; }
         public virtual OfficeType OfficeType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

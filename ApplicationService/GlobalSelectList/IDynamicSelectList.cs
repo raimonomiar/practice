@@ -23,5 +23,9 @@ namespace ApplicationService.GlobalSelectList
         IEnumerable<SelectListItem> GetOfficeList([Optional] int officeId);
 
         IEnumerable<SelectListItem> GetFiscalYearList([Optional] int fiscalYearId);
+
+        IEnumerable<SelectListItem> GetDesignationList([Optional] int designationId);
+
+
     }
 }

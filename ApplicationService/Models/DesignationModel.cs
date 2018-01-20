@@ -8,6 +8,7 @@ namespace ApplicationService.Models
 
     public partial class DesignationModel
     {
+        [Display(Name ="Designation")]
         public int Id { get; set; }
 
         [Required]

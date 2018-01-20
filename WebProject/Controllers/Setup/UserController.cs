@@ -48,6 +48,10 @@ namespace WebProject.Controllers.Setup
 
             model.dRoleList = dynamicList.GetRolesSelectList();
 
+            model.dDesignationList = dynamicList.GetDesignationList();
+
+            model.dOfficeList = dynamicList.GetOfficeList();
+
             return View(@"~\Views\Setup\User\Create.cshtml",model);
         }
 
@@ -77,6 +81,13 @@ namespace WebProject.Controllers.Setup
 
                 model.dRoleList = dynamicList.GetRolesSelectList();
 
+                model.dDesignationList = dynamicList.GetDesignationList();
+
+                model.dOfficeList = dynamicList.GetOfficeList();
+
+                TempData["Danger"] = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage);
+
+
                 return View(@"~\Views\Setup\User\Create.cshtml", model);
             }
             catch (DbEntityValidationException e)
@@ -84,6 +95,12 @@ namespace WebProject.Controllers.Setup
 
                 TempData["Danger"] = e.Message;
             }
+
+            model.dRoleList = dynamicList.GetRolesSelectList();
+
+            model.dDesignationList = dynamicList.GetDesignationList();
+
+            model.dOfficeList = dynamicList.GetOfficeList();
             return View(@"~\Views\Setup\User\Create.cshtml", model);
 
         }
@@ -101,6 +118,10 @@ namespace WebProject.Controllers.Setup
             {
                 return HttpNotFound();
             }
+
+            user.dDesignationList = dynamicList.GetDesignationList();
+
+            user.dOfficeList = dynamicList.GetOfficeList();
 
             user.dRoleList = dynamicList.GetRolesSelectList();
 
@@ -131,6 +152,10 @@ namespace WebProject.Controllers.Setup
                 }
 
                 TempData["Danger"] = "Form Error";
+                model.dRoleList = dynamicList.GetRolesSelectList();
+
+                model.dOfficeList = dynamicList.GetOfficeList();
+
                 model.dRoleList = dynamicList.GetRolesSelectList();
                 return View(@"~\Views\Setup\User\Update.cshtml", model);
 

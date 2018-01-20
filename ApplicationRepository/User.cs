@@ -32,9 +32,13 @@ namespace ApplicationRepository
         public Nullable<int> LoginAttempt { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public int RoleId { get; set; }
+        public Nullable<int> OfficeId { get; set; }
+        public Nullable<int> DesgId { get; set; }
     
+        public virtual Designation Designation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Missing> Missings { get; set; }
+        public virtual Office Office { get; set; }
         public virtual Role Role { get; set; }
     }
 }

@@ -55,6 +55,10 @@ namespace WebProject.Controllers
         {
             try
             {
+                model.MissingModel.OfficeId = Convert.ToInt32(Session["OfficeId"]);
+
+                model.MissingModel.UserId = Convert.ToInt32(Session["UserId"]);
+
                 model.MissingModelList = missingService.MissingMatches(model.MissingModel).ToList();
 
                 if (model.MissingModelList.Count>0)
@@ -71,21 +75,21 @@ namespace WebProject.Controllers
                 if (missingService.RegistrationNumberExist(Convert.ToInt32(model.MissingModel.OfficeId), Convert.ToInt32(model.MissingModel.FiscalYearId), model.MissingModel.RegistrationNumber))
                 {
                     TempData["Danger"] = $"{model.MissingModel.RegistrationNumber} Already exists please select another one !";
+                    model.FiscalYearList = dynamicSelectList.GetFiscalYearList();
+
+                    model.GenderList = StaticSelectList.GenderList();
 
                     return View(model);
                 }
 
-                if (Request.Form["yes"] == "yes" || !model.IsMatches)
+                    if (Request.Form["yes"] == "yes" || !model.IsMatches)
                 {
                     try
                     {
                        
                         if (ModelState.IsValid)
                         {
-                            model.MissingModel.OfficeId = Convert.ToInt32(Session["OfficeId"]);
-
-                            model.MissingModel.UserId = Convert.ToInt32(Session["OfficeId"]);
-
+                            
                             model.MissingModel.VerifyStatus = "P";
 
                             model.MissingModel.EnteredDate = DateTime.Now;

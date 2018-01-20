@@ -10,7 +10,7 @@
        
        @Html.AntiForgeryToken()
 
-
+       @Html.ValidationSummary()
         <div class="form-group has-feedback">
             @Html.TextBoxFor(x=>x.LoginId, new { @class = "form-control", placeholder = "Login Id" })
             <span class="glyphicon glyphicon-user form-control-feedback"></span>

@@ -65,8 +65,21 @@ namespace ApplicationService.Models
 
         public string RoleName { get; set; }
 
-        public int OfficeId { get; set; }
+        [Required]
+        [Display(Name ="Office")]
+        public int? OfficeId { get; set; }
+        public virtual OfficeModel Office { get; set; }
+
+        [Required]
+        [Display(Name ="Designation")]
+        public int? DesignationId { get; set; }
+        public virtual DesignationModel Designation { get; set; }
+
         public IEnumerable<SelectListItem> dRoleList { get; set; }
+
+        public IEnumerable<SelectListItem> dOfficeList { get; set; }
+
+        public IEnumerable<SelectListItem> dDesignationList { get; set; }
 
         public IEnumerable<UserModel> UserList { get; set; }
     }

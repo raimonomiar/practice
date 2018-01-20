@@ -135,5 +135,19 @@ namespace ApplicationService.GlobalSelectList
             return officeList;
         }
 
+        public IEnumerable<SelectListItem> GetDesignationList([Optional] int designationId)
+        {
+            var designationList = unitOfWork.DesignationRepository
+                .All()
+                .Select(x => new SelectListItem
+                {
+                    Value = x.Id.ToString(),
+                    Text = x.DesgName,
+                    Selected = designationId == x.Id
+                })
+                .ToList();
+
+            return designationList;
+        }
     }
 }
