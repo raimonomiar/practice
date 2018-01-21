@@ -15,6 +15,8 @@ namespace WebProject.Models
 
         public IEnumerable<SelectListItem> FiscalYearList { get; set; }
 
+        public IEnumerable<PhotoModel> PhotoList { get; set; }
+
         public MissingModel MissingModel{ get; set; }
 
         public List<MissingModel> MissingModelList { get; set; }

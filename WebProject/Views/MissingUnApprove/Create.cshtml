@@ -47,19 +47,19 @@
                     <div class="form-group">
                         @Html.LabelFor(x => x.MissingModel.DOB, new { @class = "control-label" })
 
-                        @Html.TextBoxFor(x => x.MissingModel.DOB, new { @class = "form-control pull-right", id="datepicker" })
+                        @Html.TextBoxFor(x => x.MissingModel.DOB, new { @class = "form-control pull-right", id = "datepicker" })
 
                         @Html.ValidationMessageFor(x => x.MissingModel.DOB, null, new { @class = "text-red" })
                     </div>
 
 
                     @*<div class="form-group">
-                        @Html.LabelFor(x => x.MissingModel.OfficeId, new { @class = "control-label" })
+                            @Html.LabelFor(x => x.MissingModel.OfficeId, new { @class = "control-label" })
 
-                        @Html.DropDownListFor(x => x.MissingModel.OfficeId, Model.OfficeList, "---Select Office---", htmlAttributes: new { @class = "form-control" })
+                            @Html.DropDownListFor(x => x.MissingModel.OfficeId, Model.OfficeList, "---Select Office---", htmlAttributes: new { @class = "form-control" })
 
-                        @Html.ValidationMessageFor(x => x.MissingModel.OfficeId, null, new { @class = "text-red" })
-                    </div>*@
+                            @Html.ValidationMessageFor(x => x.MissingModel.OfficeId, null, new { @class = "text-red" })
+                        </div>*@
                 </div>
 
                 <div class="col-md-6">
@@ -113,9 +113,95 @@
                 <a href="@Url.Action("Index","Role")" class="btn btn-default">Cancel</a>
                 <button type="submit" class="btn btn-info pull-right">Create</button>
             </div>
+            if(Model.IsMatches)
+            {
+                <div class="box-footer">
+                    Found similiar records that matches to your data. Are you sure you want to continue?
+                    <button type="submit" class="btn btn-primary" name="yes" value="yes">Yes</button>
+                </div>
+            }
+
+
         }
     </div>
+
+    @*Similiar Missing List*@
+    @{
+        if (Model.MissingCount > 0)
+        {
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Missing Similar</h3>
+                </div>
+
+
+                <div class="box-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="width: 10px">S.N.</th>
+                            <th>@Html.DisplayNameFor(x => x.MissingModel.Fname)</th>
+                            <th>@Html.DisplayNameFor(x => x.MissingModel.Lname)</th>
+                            <th>@Html.DisplayNameFor(x => x.MissingModel.Photo)</th>
+                            <th>@Html.DisplayNameFor(x => x.MissingModel.ComplainByName)</th>
+                            <th>@Html.DisplayNameFor(x => x.MissingModel.ComplainDate)</th>
+                            <th style="width: 250px;">Actions</th>
+                        </tr>
+
+                        @foreach (var user in Model.MissingModelList)
+                        {
+                            var i = 1;
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(x => i)
+
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(x => user.Fname)
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => user.Lname)
+                                </td>
+                                <td>
+                                    Photo
+                                </td>
+                                <td>
+
+                                    @if (!string.IsNullOrEmpty(user.ComplainByName))
+                                    {
+                                        @Html.DisplayFor(x => user.ComplainByName)
+                                    }
+                                    else
+                                    {
+                                        <span>Not Assigned</span>
+                                    }
+                                    @if (user.ComplainDate != null)
+                                    {
+                                        Html.DisplayFor(x => user.ComplainDate);
+                                    }
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(x => user.OfficeName)
+                                </td>
+                                <td>
+
+                                    <a href="@Url.Action("Detail","MissingUnApprove", new {id = user.UserId})" class="btn btn-primary"><i class="fa fa-eye pull-left"></i></a>
+
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                    </table>
+                </div>
+            </div>
+        }
+    }
+
+
 </div>
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

@@ -33,5 +33,78 @@ namespace ApplicationService.GlobalSelectList
                     Selected= gender == "Others"
                 }
             };
+
+        public static List<SelectListItem> MartialList() =>
+            new List<SelectListItem>
+            {
+                new SelectListItem
+                {
+                    Text = "Single",
+                    Value ="Single"
+                },
+                new SelectListItem
+                {
+                    Text = "Married",
+                    Value = "Married"
+                },
+                new SelectListItem
+                {
+                    Text="UnMarried",
+                    Value="UnMarried"
+                },
+                new SelectListItem
+                {
+                    Text="Divorced",
+                    Value="Divorced"
+                }
+            };
+
+        public static List<SelectListItem> PersonTypeList([Optional] string type) =>
+            new List<SelectListItem>
+            {
+                new SelectListItem
+                {
+                    Text="Child",
+                    Value="Child",
+                    Selected = type == "Child"
+                },
+                new SelectListItem
+                {
+                    Text="Teen",
+                    Value="Teen",
+                    Selected=type=="Teen"
+                },
+                new SelectListItem
+                {
+                    Text="Adult",
+                    Value="Adult",
+                    Selected = type == "Adult"
+                }
+
+            };
+
+        public static List<SelectListItem> HeightUnitList() =>
+            new List<SelectListItem>
+            {
+                new SelectListItem
+                {
+                    Text ="ft",
+                    Value="ft",
+                    Selected = true
+                },
+                new SelectListItem
+                {
+                    Text="inch",
+                    Value="inch",
+
+                },
+                new SelectListItem
+                {
+                    Text="cm",
+                    Value="cm"
+                }
+            };
+
+
     }
 }

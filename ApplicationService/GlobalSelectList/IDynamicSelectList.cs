@@ -26,6 +26,22 @@ namespace ApplicationService.GlobalSelectList
 
         IEnumerable<SelectListItem> GetDesignationList([Optional] int designationId);
 
+        IEnumerable<SelectListItem> GetColorList([Optional] int colorId);
+
+        IEnumerable<SelectListItem> GetEducationList([Optional] int eduId);
+
+        IEnumerable<SelectListItem> GetReligionList([Optional] int regId);
+
+        IEnumerable<SelectListItem> GetCountryList([Optional] int countryId);
+
+        IEnumerable<SelectListItem> GetStateList([Optional] int stateId);
+
+        IEnumerable<SelectListItem> GetIdTypeList([Optional]int idType);
+
+        IEnumerable<SelectListItem> GetEthnicities([Optional]int ethId);
+
+        
+
 
     }
 }

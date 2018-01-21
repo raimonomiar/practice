@@ -133,5 +133,19 @@ namespace WebProject.Controllers
                 return View(model); 
             }
         }
+
+        public ActionResult Edit(int? id)
+        {
+            var missingViewModel = new MissingUnApproveViewModel
+            {
+                MissingModel = missingService.GetOneMissingModel(id),
+               PhotoList = photoService.GetAllT().Where(x=>x.MissingId == id),
+               GenderList = StaticSelectList.GenderList(),
+               FiscalYearList= dynamicSelectList.GetFiscalYearList(),
+               OfficeList = dynamicSelectList.GetOfficeList(),
+               
+                 
+            };
+        }
     }
 }
