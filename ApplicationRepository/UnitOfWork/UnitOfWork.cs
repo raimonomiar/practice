@@ -147,5 +147,23 @@ namespace ApplicationRepository.UnitOfWork
             get => _photoRepository ?? (_photoRepository = new RepositoryBase<Photo>());
 
         }
+
+        private IRepository<country> _countryRepository;
+        public IRepository<country> CountryRepository
+        {
+            get => _countryRepository ?? (_countryRepository = new RepositoryBase<country>());
+        }
+
+        private IRepository<IdType> _idTypeRepository;
+        public IRepository<IdType> IdTypeRepository
+        {
+            get => _idTypeRepository ?? (_idTypeRepository = new RepositoryBase<IdType>());
+        }
+
+        private IRepository<Ethnicity> _ethnicityRepository;
+        public IRepository<Ethnicity> EthnicityRepository
+        {
+            get => _ethnicityRepository ?? (_ethnicityRepository = new RepositoryBase<Ethnicity>());
+        }
     }
 }

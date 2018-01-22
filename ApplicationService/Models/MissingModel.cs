@@ -269,17 +269,16 @@ namespace ApplicationService.Models
         public string TDistrictName { get; set; }
 
 
-        public virtual Colour Colour { get; set; }
-        public virtual Colour Colour1 { get; set; }
-        public virtual country country { get; set; }
-        public virtual EducationLevel EducationLevel { get; set; }
-        public virtual Ethnicity Ethnicity { get; set; }
-        public virtual FiscalYear FiscalYear { get; set; }
-        public virtual IdType IdType { get; set; }
-        public virtual Office Office { get; set; }
-        public virtual Municipality Municipality { get; set; }
-        public virtual Religion Religion { get; set; }
-        public virtual Municipality Municipality1 { get; set; }
-        public virtual User User { get; set; }
+        public virtual ColourModel Colour { get; set; }
+        public virtual CountryModel country { get; set; }
+        public virtual EducationLevelModel EducationLevel { get; set; }
+        public virtual EthnicityModel Ethnicity { get; set; }
+        public virtual FiscalYearModel FiscalYear { get; set; }
+        public virtual IdTypeModel IdType { get; set; }
+        public virtual OfficeModel Office { get; set; }
+        public virtual MunicipalityModel Municipality { get; set; }
+        public virtual ReligionModel Religion { get; set; }
+        public virtual MunicipalityModel Municipality1 { get; set; }
+        public virtual UserModel User { get; set; }
     }
 }

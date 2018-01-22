@@ -40,6 +40,9 @@ namespace ApplicationService.GlobalSelectList
 
         IEnumerable<SelectListItem> GetEthnicities([Optional]int ethId);
 
+        IEnumerable<SelectListItem> GetDistrictListByStateId(int? stateId = 0);
+
+        IEnumerable<SelectListItem> GetMunicipalityListByDistrictId(int? districtId = 0);
         
 
 

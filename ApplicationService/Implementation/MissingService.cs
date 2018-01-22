@@ -638,6 +638,7 @@ namespace ApplicationService.Implementation
                         .Include(x => x.country)
                         .Include(x => x.EducationLevel)
                         .Include(x => x.Colour)
+                        .Include(x=>x.Office)
                         .Include(x => x.IdType)
                         .Include(x => x.User)
                         .SingleOrDefault(x => x.Id == Id);

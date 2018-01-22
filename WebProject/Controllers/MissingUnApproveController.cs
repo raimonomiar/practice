@@ -98,7 +98,7 @@ namespace WebProject.Controllers
 
                             model.MissingModel.Id = missingService.AddMissing(model.MissingModel).Id;
                             TempData["Success"] = $"{model.MissingModel.Fname} Record Added , Now Add full details please !!";
-                            return RedirectToAction("Index", "MissingUnApproveController", new { id = model.MissingModel.Id });
+                            return RedirectToAction("Edit", "MissingUnApproveController", new { id = model.MissingModel.Id });
 
 
                         }
@@ -136,16 +136,72 @@ namespace WebProject.Controllers
 
         public ActionResult Edit(int? id)
         {
-            var missingViewModel = new MissingUnApproveViewModel
+            try
             {
-                MissingModel = missingService.GetOneMissingModel(id),
-               PhotoList = photoService.GetAllT().Where(x=>x.MissingId == id),
-               GenderList = StaticSelectList.GenderList(),
-               FiscalYearList= dynamicSelectList.GetFiscalYearList(),
-               OfficeList = dynamicSelectList.GetOfficeList(),
-               
-                 
-            };
+                if (id == null)
+                {
+                    return HttpNotFound();
+                }
+
+                var missingModel = missingService.GetOneMissingModel(id);
+
+                var missingViewModel = new MissingUnApproveViewModel
+                {
+                    MissingModel = missingModel,
+
+                    PhotoList = photoService.GetAllT().Where(x => x.MissingId == id),
+
+                    GenderList = StaticSelectList.GenderList(),
+
+                    FiscalYearList = dynamicSelectList.GetFiscalYearList(),
+
+                    OfficeList = dynamicSelectList.GetOfficeList(Convert.ToInt32(missingModel.OfficeId)),
+
+                    ColourList = dynamicSelectList.GetColorList(),
+
+                    EducationList = dynamicSelectList.GetColorList(),
+
+                    ReligionList = dynamicSelectList.GetReligionList(),
+
+                    CountryList = dynamicSelectList.GetCountryList(),
+
+                    StateList = dynamicSelectList.GetStateList(),
+
+                    IdTypeList = dynamicSelectList.GetIdTypeList(),
+
+                    EthnicityList = dynamicSelectList.GetEthnicities(),
+
+                    MartialStatusList = StaticSelectList.MartialList(),
+
+                    PersonTypeList = StaticSelectList.PersonTypeList(),
+
+                    HeightUnitList = StaticSelectList.HeightUnitList(),
+
+                    MDistrictList = dynamicSelectList.GetDistrictListByStateId(missingModel.MStateId),
+
+                    PDistrictList = dynamicSelectList.GetDistrictListByStateId(missingModel.PStateId),
+
+                    TDistrictList = dynamicSelectList.GetDistrictListByStateId(missingModel.TStateId),
+
+                    PMunicipalityList = dynamicSelectList.GetDistrictListByStateId(missingModel.PDistrictId),
+
+                    MMunicipalityList = dynamicSelectList.GetDistrictListByStateId(missingModel.MDistrictId),
+
+                    TMunicipalityList = dynamicSelectList.GetMunicipalityListByDistrictId(missingModel.TDistrictId)
+
+
+                };
+
+                return View(missingViewModel);
+            }
+            catch (Exception e)
+            {
+
+                TempData["Danger"] = $"Opps something went wrong {e.Message}";
+                throw;
+            }
+            
+            
         }
     }
 }

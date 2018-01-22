@@ -149,5 +149,123 @@ namespace ApplicationService.GlobalSelectList
 
             return designationList;
         }
+
+        public IEnumerable<SelectListItem> GetColorList([Optional] int colorId) =>
+            unitOfWork.ColourRepository
+            .All()
+            .Select(x => new SelectListItem
+            {
+                Value = x.id.ToString(),
+                Text = x.ColourName,
+                Selected = colorId == x.id
+            })
+            .ToList();
+
+        public IEnumerable<SelectListItem> GetEducationList([Optional] int eduId) =>
+            unitOfWork.EducationLevelRepository
+            .All()
+            .Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.LevelName,
+                Selected = eduId == x.Id
+            })
+            .ToList();
+
+        public IEnumerable<SelectListItem> GetReligionList([Optional] int regId) =>
+            unitOfWork.ReligionRepository
+            .All()
+            .Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.ReligionName,
+                Selected = regId == x.Id
+            })
+            .ToList();
+
+        public IEnumerable<SelectListItem> GetCountryList([Optional] int countryId) =>
+            unitOfWork.CountryRepository
+            .All()
+            .Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.CountryName,
+                Selected = countryId == x.Id
+            })
+            .ToList();
+
+        public IEnumerable<SelectListItem> GetStateList([Optional] int stateId) =>
+            unitOfWork.StateRepository
+            .All()
+            .Select(x => new SelectListItem
+            {
+                Value = x.StateId.ToString(),
+                Text = x.StateName,
+                Selected = stateId == x.StateId
+            })
+            .ToList();
+
+        public IEnumerable<SelectListItem> GetIdTypeList([Optional] int idType) =>
+            unitOfWork.IdTypeRepository
+            .All()
+            .Select(x => new SelectListItem
+            {
+                Value = x.id.ToString(),
+                Text = x.IdTypeName,
+                Selected = idType == x.id
+            })
+            .ToList();
+
+        public IEnumerable<SelectListItem> GetEthnicities([Optional] int ethId) =>
+            unitOfWork.EthnicityRepository
+            .All()
+            .Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.EthnicityName,
+                Selected = ethId == x.Id
+            })
+            .ToList();
+
+        public IEnumerable<SelectListItem> GetDistrictListByStateId(int? stateId = 0)
+        {
+            var districts = new List<SelectListItem>();
+
+            if (stateId != 0)
+            {
+                districts = unitOfWork.DistrictRepository
+                    .Get(x => x.StateId == stateId)
+                    .Select(x => new SelectListItem
+                    {
+                        Value = x.Id.ToString(),
+                        Text = x.DistrictNameEng,
+                        Selected = stateId == x.StateId
+                    })
+                    .ToList();
+            }
+
+            return districts;
+            
+        }
+
+        public IEnumerable<SelectListItem> GetMunicipalityListByDistrictId(int? districtId = 0)
+        {
+            var municipalityList = new List<SelectListItem>();
+
+            if (districtId !=0)
+            {
+                municipalityList = unitOfWork.MunicipalityRepository
+                    .Get(x => x.DisId == districtId)
+                    .Select(x => new SelectListItem
+                    {
+                        Value = x.Id.ToString(),
+                        Text = x.MunicipalityName,
+                        Selected = districtId == x.DisId
+                    })
+                    .ToList();
+            }
+
+            return municipalityList;
+        }
     }
 }

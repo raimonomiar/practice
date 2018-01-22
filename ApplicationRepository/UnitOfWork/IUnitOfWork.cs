@@ -41,5 +41,11 @@ namespace ApplicationRepository.UnitOfWork
 
         IRepository<Photo> PhotoRepository { get; }
 
-}
+        IRepository<country> CountryRepository { get; }
+
+        IRepository<IdType> IdTypeRepository { get; }
+
+        IRepository<Ethnicity> EthnicityRepository { get; }
+
+    }
 }

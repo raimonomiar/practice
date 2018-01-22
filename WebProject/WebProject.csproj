@@ -1213,6 +1213,7 @@
     <Content Include="Views\Configuration\FiscalYear\Create.cshtml" />
     <Content Include="Views\Configuration\FiscalYear\Edit.cshtml" />
     <Content Include="Views\MissingUnApprove\Create.cshtml" />
+    <Content Include="Views\MissingUnApprove\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

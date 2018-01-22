@@ -125,10 +125,13 @@
     <Compile Include="Models\AccessModel.cs" />
     <Compile Include="Models\AssignMenuModel.cs" />
     <Compile Include="Models\ColourModel.cs" />
+    <Compile Include="Models\CountryModel.cs" />
     <Compile Include="Models\DesignationModel.cs" />
     <Compile Include="Models\DistrictModel.cs" />
     <Compile Include="Models\EducationLevelModel.cs" />
+    <Compile Include="Models\EthnicityModel.cs" />
     <Compile Include="Models\FiscalYearModel.cs" />
+    <Compile Include="Models\IdTypeModel.cs" />
     <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Models\MissingExcelReportModel.cs" />
     <Compile Include="Models\MissingModel.cs" />

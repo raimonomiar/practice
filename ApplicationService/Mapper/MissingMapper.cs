@@ -123,9 +123,9 @@ namespace ApplicationService.Mapper
                 Id = model.Id,
                 OfficeId = model.OfficeId,
                 UserId = model.UserId,
-                User = new User
+                User = new UserModel
                 {
-                    Username = model.User.Username
+                    Username = model.User != null ? model.User.Username : ""
                 },
 
                 FiscalYearId = model.FiscalYearId,
@@ -168,7 +168,7 @@ namespace ApplicationService.Mapper
                 HairColorId = model.HairColorId,
                 Build = model.Build,
                 Language = model.Language,
-
+                Hair = model.Hair,
                 TStateId = model.TStateId,
                 TDistrictId = model.TDistrictId,
                 TMunicipalityId = model.TMunicipalityId,
@@ -205,7 +205,6 @@ namespace ApplicationService.Mapper
                 DateOfFound = model.DateOfFound,
                 FoundAddress = model.FoundAddress,
                 LiveStatus = model.LiveStatus,
-
                 FoundRemarks = model.FoundRemarks,
                 FoundByOfficeId = model.FoundByOfficeId,
                 LastSearchActivityDate = model.LastSearchActivityDate,
@@ -216,58 +215,60 @@ namespace ApplicationService.Mapper
                 HandOverDate = model.HandOverDate,
                 HandOverRelation = model.HandOverRelation,
                 HandOverContactNumber = model.HandOverContactNumber,
-                Ethnicity = new Ethnicity
+                Ethnicity = new EthnicityModel
                 {
-                    EthnicityName = model.Ethnicity.EthnicityName ?? ""
+                    EthnicityName = model.Ethnicity != null ? model.Ethnicity.EthnicityName : ""
                 },
-                Office = new Office
+                Office = new OfficeModel
                 {
-                    OfficeName = model.Office.OfficeName ?? ""
+                    OfficeName = model.Office != null ? model.Office.OfficeName : ""
                 },
-                country = new country
+                country = new CountryModel
                 {
                     Id = model.country?.Id ?? 0,
-                    CountryName = model.country.CountryName ?? "",
-                    CountryCode = model.country.CountryCode ?? "",
-                    Nationality = model.country.Nationality ?? ""
-                    
+                    CountryName = model.country != null ? model.country.CountryName : "",
+                    CountryCode = model.country != null ? model.country.CountryCode : "",
+                    Nationality = model.country != null ? model.country.Nationality : ""
+
                 },
-                Religion = new Religion
+                Religion = new ReligionModel
                 {
                     Id = model.Religion?.Id ?? 0,
-                    ReligionName = model.Religion.ReligionName ?? ""
+                    ReligionName = model.Religion != null ? model.Religion.ReligionName : ""
                 },
-                EducationLevel = new EducationLevel
+                EducationLevel = new EducationLevelModel
                 {
                     Id = model.EducationLevel?.Id ?? 0,
-                    LevelName = model.EducationLevel.LevelName ?? ""
+                    LevelName = model.EducationLevel != null ? model.EducationLevel.LevelName : ""
                 },
-                Colour = new Colour
+                Colour = new ColourModel
                 {
                     id = model.Colour?.id ?? 0,
-                    ColourName = model.Colour.ColourName ?? "",
+                    ColourName = model.Colour != null ? model.Colour.ColourName : "",
                     
                 },
-                Municipality = new Municipality
+                Municipality = new MunicipalityModel
                 {
                     Id = model.Municipality?.Id ?? 0,
-                    MunicipalityName = model.Municipality.MunicipalityName ?? "",
+                    MunicipalityName = model.Municipality !=null ? model.Municipality.MunicipalityName : "",
                     MuniTypeId = model.Municipality.MuniTypeId ?? 0,
-                    MunicipalityType = new MunicipalityType
+                    MunType = new MuncipalityTypeModel
                     {
-                        MuniType= model.Municipality.MunicipalityType.MuniType ?? "",
+                        MuniType=model.Municipality !=null ?  model.Municipality.MunicipalityType.MuniType : "",
                         
                     },
-                    District = new District
+                    District = new DistrictModel
                     {
-                        DistrictCode = model.Municipality.District?.DistrictCode ?? 0,
-                        DistrictNameEng = model.Municipality.District.DistrictNameEng ?? "",
+                        DistrictCode = model.Municipality!=null ? Convert.ToInt32(model.Municipality.District?.DistrictCode) : 0,
+                        DistrictNameEng = model.Municipality !=null ? model.Municipality.District.DistrictNameEng : "",
                         State = new State
                         {
-                            StateName = model.Municipality.District.State.StateName ?? ""
+                            StateName = model.Municipality !=null ? model.Municipality.District.State.StateName : ""
                         }
                     }
                 }
+                
+                
                 
 
 
@@ -292,9 +293,9 @@ namespace ApplicationService.Mapper
                     Id = model.Id,
                     OfficeId = model.OfficeId,
                     UserId = model.UserId,
-                    User = new User
+                    User = new UserModel
                     {
-                        Username = model.User.Username
+                        Username = model.User != null ? model.User.Username : ""
                     },
 
                     FiscalYearId = model.FiscalYearId,
@@ -337,7 +338,7 @@ namespace ApplicationService.Mapper
                     HairColorId = model.HairColorId,
                     Build = model.Build,
                     Language = model.Language,
-
+                    Hair = model.Hair,
                     TStateId = model.TStateId,
                     TDistrictId = model.TDistrictId,
                     TMunicipalityId = model.TMunicipalityId,
@@ -374,7 +375,6 @@ namespace ApplicationService.Mapper
                     DateOfFound = model.DateOfFound,
                     FoundAddress = model.FoundAddress,
                     LiveStatus = model.LiveStatus,
-
                     FoundRemarks = model.FoundRemarks,
                     FoundByOfficeId = model.FoundByOfficeId,
                     LastSearchActivityDate = model.LastSearchActivityDate,
@@ -385,61 +385,58 @@ namespace ApplicationService.Mapper
                     HandOverDate = model.HandOverDate,
                     HandOverRelation = model.HandOverRelation,
                     HandOverContactNumber = model.HandOverContactNumber,
-                    Ethnicity = new Ethnicity
+                    Ethnicity = new EthnicityModel
                     {
-                        EthnicityName = model.Ethnicity.EthnicityName ?? ""
+                        EthnicityName = model.Ethnicity != null ? model.Ethnicity.EthnicityName : ""
                     },
-                    Office = new Office
+                    Office = new OfficeModel
                     {
-                        OfficeName = model.Office.OfficeName ?? ""
+                        OfficeName = model.Office != null ? model.Office.OfficeName : ""
                     },
-                    country = new country
+                    country = new CountryModel
                     {
                         Id = model.country?.Id ?? 0,
-                        CountryName = model.country.CountryName ?? "",
-                        CountryCode = model.country.CountryCode ?? "",
-                        Nationality = model.country.Nationality ?? ""
+                        CountryName = model.country != null ? model.country.CountryName : "",
+                        CountryCode = model.country != null ? model.country.CountryCode : "",
+                        Nationality = model.country != null ? model.country.Nationality : ""
 
                     },
-                    Religion = new Religion
+                    Religion = new ReligionModel
                     {
                         Id = model.Religion?.Id ?? 0,
-                        ReligionName = model.Religion.ReligionName ?? ""
+                        ReligionName = model.Religion != null ? model.Religion.ReligionName : ""
                     },
-                    EducationLevel = new EducationLevel
+                    EducationLevel = new EducationLevelModel
                     {
                         Id = model.EducationLevel?.Id ?? 0,
-                        LevelName = model.EducationLevel.LevelName ?? ""
+                        LevelName = model.EducationLevel != null ? model.EducationLevel.LevelName : ""
                     },
-                    Colour = new Colour
+                    Colour = new ColourModel
                     {
                         id = model.Colour?.id ?? 0,
-                        ColourName = model.Colour.ColourName ?? "",
+                        ColourName = model.Colour != null ? model.Colour.ColourName : "",
 
                     },
-                    Municipality = new Municipality
+                    Municipality = new MunicipalityModel
                     {
                         Id = model.Municipality?.Id ?? 0,
-                        MunicipalityName = model.Municipality.MunicipalityName ?? "",
+                        MunicipalityName = model.Municipality != null ? model.Municipality.MunicipalityName : "",
                         MuniTypeId = model.Municipality.MuniTypeId ?? 0,
-                        MunicipalityType = new MunicipalityType
+                        MunType = new MuncipalityTypeModel
                         {
-                            MuniType = model.Municipality.MunicipalityType.MuniType ?? "",
+                            MuniType = model.Municipality != null ? model.Municipality.MunicipalityType.MuniType : "",
 
                         },
-                        District = new District
+                        District = new DistrictModel
                         {
-                            DistrictCode = model.Municipality.District?.DistrictCode ?? 0,
-                            DistrictNameEng = model.Municipality.District.DistrictNameEng ?? "",
+                            DistrictCode = model.Municipality != null ? Convert.ToInt32(model.Municipality.District?.DistrictCode) : 0,
+                            DistrictNameEng = model.Municipality != null ? model.Municipality.District.DistrictNameEng : "",
                             State = new State
                             {
-                                StateName = model.Municipality.District.State.StateName ?? ""
+                                StateName = model.Municipality != null ? model.Municipality.District.State.StateName : ""
                             }
                         }
                     }
-
-
-
 
 
 
