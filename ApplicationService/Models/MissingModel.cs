@@ -87,6 +87,8 @@ namespace ApplicationService.Models
 
 
         public string Occupation { get; set; }
+
+        [Display(Name ="Education Level")]
         public int?EducationLevelId { get; set; }
         public DateTime? DOB { get; set; }
 
@@ -95,15 +97,18 @@ namespace ApplicationService.Models
         public string Hieght { get; set; }
         public string Weight { get; set; }
 
+        [Display(Name ="Height Unit")]   
         public string HeightUnit { get; set; }
 
         [Display(Name ="Clothes Worn")]
         public string ClothesWorn { get; set; }
 
+        [Display(Name ="Eye Color")]
         public int?EyeColorId { get; set; }
 
         [Display(Name ="Hair Colour")] 
         public string Hair { get; set; }
+        [Display(Name = "Hair Colour")]
         public int?HairColorId { get; set; }
         public string Build { get; set; }
         public string Language { get; set; }

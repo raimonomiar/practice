@@ -53,6 +53,7 @@ namespace ApplicationService.Mapper
                 EstimatedAge = model.EstimatedAge,
                 Hieght = model.Hieght,
                 Weight = model.Weight,
+                HeightUnit=model.HeightUnit,
 
                 ClothesWorn = model.ClothesWorn,
                 EyeColorId = model.EyeColorId,
@@ -162,6 +163,7 @@ namespace ApplicationService.Mapper
                 EstimatedAge = model.EstimatedAge,
                 Hieght = model.Hieght,
                 Weight = model.Weight,
+                HeightUnit=model.HeightUnit,
 
                 ClothesWorn = model.ClothesWorn,
                 EyeColorId = model.EyeColorId,
@@ -245,39 +247,40 @@ namespace ApplicationService.Mapper
                 {
                     id = model.Colour?.id ?? 0,
                     ColourName = model.Colour != null ? model.Colour.ColourName : "",
-                    
+
                 },
                 Municipality = new MunicipalityModel
                 {
                     Id = model.Municipality?.Id ?? 0,
-                    MunicipalityName = model.Municipality !=null ? model.Municipality.MunicipalityName : "",
-                    MuniTypeId = model.Municipality.MuniTypeId ?? 0,
+                    MunicipalityName = model.Municipality != null ? model.Municipality.MunicipalityName : "",
+                    MuniTypeId = model.Municipality != null ? model.Municipality.MuniTypeId : 0,
                     MunType = new MuncipalityTypeModel
                     {
-                        MuniType=model.Municipality !=null ?  model.Municipality.MunicipalityType.MuniType : "",
-                        
+                        MuniType = model.Municipality != null ? model.Municipality.MunicipalityType.MuniType : "",
+
                     },
                     District = new DistrictModel
                     {
-                        DistrictCode = model.Municipality!=null ? Convert.ToInt32(model.Municipality.District?.DistrictCode) : 0,
-                        DistrictNameEng = model.Municipality !=null ? model.Municipality.District.DistrictNameEng : "",
-                        State = new State
+                        DistrictCode = model.Municipality != null ? Convert.ToInt32(model.Municipality.District?.DistrictCode) : 0,
+                        DistrictNameEng = model.Municipality != null ? model.Municipality.District.DistrictNameEng : "",
+                        State = new StateModel
                         {
-                            StateName = model.Municipality !=null ? model.Municipality.District.State.StateName : ""
+                            StateName = model.Municipality != null ? model.Municipality.District.State.StateName : ""
                         }
                     }
                 }
-                
-                
-                
 
 
-                
+
+
+
+
 
 
 
             };
 
+           
             return missingModel;
         }
 
@@ -332,7 +335,8 @@ namespace ApplicationService.Mapper
                     EstimatedAge = model.EstimatedAge,
                     Hieght = model.Hieght,
                     Weight = model.Weight,
-
+                    HeightUnit=model.HeightUnit,
+                   
                     ClothesWorn = model.ClothesWorn,
                     EyeColorId = model.EyeColorId,
                     HairColorId = model.HairColorId,
@@ -431,7 +435,7 @@ namespace ApplicationService.Mapper
                         {
                             DistrictCode = model.Municipality != null ? Convert.ToInt32(model.Municipality.District?.DistrictCode) : 0,
                             DistrictNameEng = model.Municipality != null ? model.Municipality.District.DistrictNameEng : "",
-                            State = new State
+                            State = new StateModel
                             {
                                 StateName = model.Municipality != null ? model.Municipality.District.State.StateName : ""
                             }

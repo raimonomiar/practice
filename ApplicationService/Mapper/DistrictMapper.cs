@@ -37,7 +37,7 @@ namespace ApplicationService.Mapper
                 DistrictNameEng = model.DistrictNameEng,
                 DistrictNameNp = model.DistrictNameNp,
                 StateId = model.State.StateId,
-                State = new State
+                State = new StateModel
                 {
                     StateId = model.State != null ? model.State.StateId : 0
                 }
@@ -59,7 +59,7 @@ namespace ApplicationService.Mapper
                     DistrictNameEng = item.DistrictNameEng,
                     DistrictNameNp = item.DistrictNameNp,
                     StateId = item.StateId,
-                    State = new State
+                    State = new StateModel
                     {
                         StateId = item.State != null ? item.State.StateId : 0
                     }

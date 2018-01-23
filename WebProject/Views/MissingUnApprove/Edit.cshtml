@@ -4,144 +4,266 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
-
-<div class="col-md-12">
-<!-- Horizontal Form -->
-<div class="box box-info">
-    <div class="box-header with-border">
-        <h3 class="box-title">Horizontal Form</h3>
-    </div>
-    <!-- /.box-header -->
-    <!-- form start -->
-    @using (Html.BeginForm("Edit","MissingUnApprove",FormMethod.Post,new { @class = "form-horizontal" }))
-    {
-        @Html.AntiForgeryToken()
-        @Html.HiddenFor(x=>x.MissingModel.Id)
-        @Html.HiddenFor(x=>x.MissingModel.OfficeId)
-        @Html.HiddenFor(x=>x.MissingModel.UserId)
-        @Html.ValidationSummary()
-        <div class="box-body">
-            @*<div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                </div>
+<div class="row">
+    <div class="col-md-12">
+        <!-- Horizontal Form -->
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Edit</h3>
             </div>
-            <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-                <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> Remember me
-                        </label>
-                    </div>
-                </div>
-            </div>*@
-            <h4 class="text-center">General Info</h4>
-            <hr />
-            <div class="col-md-6">
+            <!-- /.box-header -->
+            <!-- form start -->
+            @using (Html.BeginForm("Edit", "MissingUnApprove", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(x => x.MissingModel.Id)
+                @Html.HiddenFor(x => x.MissingModel.OfficeId)
+                @Html.HiddenFor(x => x.MissingModel.UserId)
+                @Html.ValidationSummary()
+                <div class="box-body">
+                    @*<div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> Remember me
+                                    </label>
+                                </div>
+                            </div>
+                        </div>*@
+                    <h4 class="text-center">General Info</h4>
+                    <hr />
+                    <div class="col-md-6">
 
-                <div class="form-group">
-                    @Html.LabelFor(x=>x.MissingModel.RegistrationNumber, new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
-                        @Html.EditorFor(x=>x.MissingModel.RegistrationNumber, new {@class = "form-control" })
-                    </div>
-                    @Html.ValidationMessageFor(x=>x.MissingModel.RegistrationNumber, null, new { @class = "text-red" })
-                </div>
-                
-                <div class="form-group">
-                    @Html.LabelFor(x => x.MissingModel.Fname, new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
-                        @Html.TextBoxFor(x => x.MissingModel.Fname, new { @class = "form-control" })
-                    </div>
-                    @Html.ValidationMessageFor(x => x.MissingModel.Fname, null, new { @class = "text-red" })
-                </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.RegistrationNumber, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.EditorFor(x => x.MissingModel.RegistrationNumber, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.RegistrationNumber, null, new { @class = "text-red" })
+                        </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(x => x.MissingModel.Lname, new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
-                        @Html.TextBoxFor(x => x.MissingModel.Lname, new { @class = "form-control" })
-                    </div>
-                    @Html.ValidationMessageFor(x => x.MissingModel.Lname, null, new { @class = "text-red" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(x => x.MissingModel.Lname, new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
-                        @Html.TextBoxFor(x => x.MissingModel.Lname, new { @class = "form-control" })
-                    </div>
-                    @Html.ValidationMessageFor(x => x.MissingModel.Lname, null, new { @class = "text-red" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(x => x.MissingModel.Gender, new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
-                        @Html.DropDownListFor(x => x.MissingModel.Gender,Model.GenderList,"Select Gender", new { @class = "form-control" })
-                    </div>
-                    @Html.ValidationMessageFor(x => x.MissingModel.Gender, null, new { @class = "text-red" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(x => x.MissingModel.DOB, new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
-                        @Html.TextBoxFor(x => x.MissingModel.DOB, new { @class = "form-control pull-right",id= "datepicker" })
-                    </div>
-                    @Html.ValidationMessageFor(x => x.MissingModel.DOB, null, new { @class = "text-red" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(x => x.MissingModel.MotherName, new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
-                        @Html.TextBoxFor(x => x.MissingModel.MotherName, new { @class = "form-control" })
-                    </div>
-                    @Html.ValidationMessageFor(x => x.MissingModel.MotherName,null,new { @class = "text-red" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(x => x.MissingModel.EthnicityId, new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
-                        @Html.DropDownListFor(x => x.MissingModel.EthnicityId,Model.EthnicityList, new { @class = "form-control" })
-                    </div>
-                    @Html.ValidationMessageFor(x => x.MissingModel.EthnicityId, null, new { @class = "text-red" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(x => x.MissingModel.ReligionId, new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
-                        @Html.DropDownListFor(x => x.MissingModel.ReligionId,Model.EthnicityList, new { @class = "form-control" })
-                    </div>
-                    @Html.ValidationMessageFor(x => x.MissingModel.ReligionId, null, new { @class = "text-red" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(x => x.MissingModel.IdTypeId, new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
-                        @Html.DropDownListFor(x => x.MissingModel.IdTypeId,Model.IdTypeList, new { @class = "form-control" })
-                    </div>
-                    @Html.ValidationMessageFor(x => x.MissingModel.MotherName, null, new { @class = "text-red" })
-                    <div class="col-sm-10">
-                        @Html.TextBoxFor(x=>x.MissingModel.IdTypeNumber, new {@class="form-control" })
-                    </div>
-                    @Html.ValidationMessageFor(x=>x.MissingModel.IdTypeNumber,null, new { @class="text-red"})
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(x => x.MissingModel.Occupation, new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
-                        @Html.TextBoxFor(x => x.MissingModel.Occupation, new { @class = "form-control" })
-                    </div>
-                    @Html.ValidationMessageFor(x => x.MissingModel.Occupation, null, new { @class = "text-red" })
-                </div>
-                
-            </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.Fname, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(x => x.MissingModel.Fname, new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.Fname, null, new { @class = "text-red" })
+                        </div>
 
-        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.Lname, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(x => x.MissingModel.Lname, new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.Lname, null, new { @class = "text-red" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.Lname, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(x => x.MissingModel.Lname, new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.Lname, null, new { @class = "text-red" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.Gender, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.DropDownListFor(x => x.MissingModel.Gender, Model.GenderList, "Select Gender", new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.Gender, null, new { @class = "text-red" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.DOB, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-5">
+                                @Html.TextBoxFor(x => x.MissingModel.DOB, new { @class = "form-control pull-right", id = "datepicker" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.DOB, null, new { @class = "text-red" })
+                            <div class="col-sm-3">
+                                @Html.EditorFor(x => x.MissingModel.EstimatedAge, new { htmlAttributes = new { @class = "form-control", placeholder = "Estimate Age" } })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.EstimatedAge, null, new { @class = "text-red" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.MotherName, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(x => x.MissingModel.MotherName, new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.MotherName, null, new { @class = "text-red" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.EthnicityId, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.DropDownListFor(x => x.MissingModel.EthnicityId, Model.EthnicityList, "Select Ethnicity", new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.EthnicityId, null, new { @class = "text-red" })
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.FiscalYearId, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.DropDownListFor(x => x.MissingModel.FiscalYearId, Model.FiscalYearList, "Select Year", new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.FiscalYearId, null, new { @class = "text-red" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.Alias, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(x => x.MissingModel.Alias, new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.Alias, null, new { @class = "text-red" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.FatherName, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(x => x.MissingModel.FatherName, new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.FatherName, null, new { @class = "text-red" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.SpouseName, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(x => x.MissingModel.SpouseName, new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.SpouseName, null, new { @class = "text-red" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.EducationLevelId, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.DropDownListFor(x => x.MissingModel.EducationLevelId, Model.EducationList, "Select Level", new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.EducationLevelId, null, new { @class = "text-red" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.ReligionId, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.DropDownListFor(x => x.MissingModel.ReligionId, Model.ReligionList, "Select Religion", new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.ReligionId, null, new { @class = "text-red" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.IdTypeId, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-3">
+                                @Html.DropDownListFor(x => x.MissingModel.IdTypeId, Model.IdTypeList, "Select Id Type", new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.MotherName, null, new { @class = "text-red" })
+                            <div class="col-sm-5">
+                                @Html.TextBoxFor(x => x.MissingModel.IdTypeNumber, new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.IdTypeNumber, null, new { @class = "text-red" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.Occupation, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(x => x.MissingModel.Occupation, new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.Occupation, null, new { @class = "text-red" })
+                        </div>
+
+                    </div>
+                    <hr class="col-md-12" />
+                    <h4 class="text-center">Identification Details</h4>
+
+                    <hr />
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.HeightUnit, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-3">
+                                @Html.DropDownListFor(x => x.MissingModel.HeightUnit, Model.HeightUnitList, "Select Unit", new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.HeightUnit, null, new { @class = "text-red" })
+                            <div class="col-sm-5">
+                                @Html.TextBoxFor(x => x.MissingModel.Hieght, new { @class = "form-control", placeholder = "Height" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.Hieght, null, new { @class = "text-red" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.EyeColorId, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.DropDownListFor(x => x.MissingModel.EyeColorId, Model.ColourList, "Select Color", new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.EyeColorId, null, new { @class = "text-red" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.Build, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(x => x.MissingModel.Build, new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.Build, null, new { @class = "text-red" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.ClothesWorn, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(x => x.MissingModel.ClothesWorn, new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.ClothesWorn, null, new { @class = "text-red" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.SpecialIdentifier, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.TextAreaFor(x => x.MissingModel.SpecialIdentifier, new { @class = "textarea", style = "width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.SpecialIdentifier, null, new { @class = "text-red" })
+                        </div>
+                    </div>
+                    <div  class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.Weight, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(x => x.MissingModel.Weight, new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.Weight, null, new { @class = "text-red" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.HairColorId, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.DropDownListFor(x => x.MissingModel.HairColorId, Model.ColourList, "Select Color", new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.HairColorId, null, new { @class = "text-red" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.Language, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(x => x.MissingModel.Language, new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.Language, null, new { @class = "text-red" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.Photo, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                <input type="file" id="file" />
+                                <p class="help-block">Upload Image Files only for eg. <i>Jpeg,Jpg,PNG</i></p>
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.Photo, null, new { @class = "text-red" })
+                        </div>
+                    </div>
+                </div>
         <!-- /.box-body -->
-        <div class="box-footer">
-            <button type="submit" class="btn btn-default">Cancel</button>
-            <button type="submit" class="btn btn-info pull-right">Sign in</button>
-        </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-info pull-right">Sign in</button>
+                </div>
         <!-- /.box-footer -->
-    }
-</div>
-<!-- /.box -->
-<!-- general form elements disabled -->
+            }
         </div>
+        <!-- /.box -->
+        <!-- general form elements disabled -->
+    </div>
+</div>

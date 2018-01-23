@@ -194,10 +194,10 @@ namespace WebProject.Controllers
 
                 return View(missingViewModel);
             }
-            catch (Exception e)
+            catch (DbEntityValidationException e)
             {
 
-                TempData["Danger"] = $"Opps something went wrong {e.Message}";
+                TempData["Danger"] = $"Opps something went wrong {string.Join(";",e.EntityValidationErrors.SelectMany(x=>x.ValidationErrors).Select(x=>x.ErrorMessage))}";
                 throw;
             }
             

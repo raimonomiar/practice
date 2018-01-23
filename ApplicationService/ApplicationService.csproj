@@ -143,6 +143,7 @@
     <Compile Include="Models\ReligionModel.cs" />
     <Compile Include="Models\RoleAccessModel.cs" />
     <Compile Include="Models\RolesModel.cs" />
+    <Compile Include="Models\StateModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="PocoGenerator.cs">
       <AutoGen>True</AutoGen>

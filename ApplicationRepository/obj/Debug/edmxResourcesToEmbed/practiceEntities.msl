@@ -126,6 +126,7 @@
     <EntitySetMapping Name="Missings">
       <EntityTypeMapping TypeName="practiceModel.Missing">
         <MappingFragment StoreEntitySet="Missing">
+          <ScalarProperty Name="HeightUnit" ColumnName="HeightUnit" />
           <ScalarProperty Name="LastSearchActivityDate" ColumnName="LastSearchActivityDate" />
           <ScalarProperty Name="HandOverContactNumber" ColumnName="HandOverContactNumber" />
           <ScalarProperty Name="HandOverDetails" ColumnName="HandOverDetails" />

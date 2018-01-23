@@ -22,7 +22,7 @@ namespace ApplicationService.Models
 
         public int? StateId { get; set; }
 
-        public State State { get; set; }
+        public StateModel State { get; set; }
 
 
     }

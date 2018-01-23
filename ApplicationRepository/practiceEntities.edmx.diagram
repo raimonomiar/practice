@@ -5,49 +5,49 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="e07f529160b24ccf89612eaec6003e1d" Name="Diagram1">
-        <EntityTypeShape EntityType="practiceModel.Colour" Width="1.5" PointX="6" PointY="27" />
-        <EntityTypeShape EntityType="practiceModel.country" Width="1.5" PointX="6" PointY="21.75" />
-        <EntityTypeShape EntityType="practiceModel.Designation" Width="1.5" PointX="0.75" PointY="7.5" />
-        <EntityTypeShape EntityType="practiceModel.District" Width="1.5" PointX="1.5" PointY="24.375" />
-        <EntityTypeShape EntityType="practiceModel.EducationLevel" Width="1.5" PointX="6" PointY="7.875" />
-        <EntityTypeShape EntityType="practiceModel.Ethnicity" Width="1.5" PointX="6" PointY="24.75" />
-        <EntityTypeShape EntityType="practiceModel.FiscalYear" Width="1.5" PointX="6" PointY="1.625" />
-        <EntityTypeShape EntityType="practiceModel.IdType" Width="1.5" PointX="6" PointY="5.25" />
+        <EntityTypeShape EntityType="practiceModel.Colour" Width="1.5" PointX="6" PointY="23.5" />
+        <EntityTypeShape EntityType="practiceModel.country" Width="1.5" PointX="6" PointY="15.25" />
+        <EntityTypeShape EntityType="practiceModel.Designation" Width="1.5" PointX="0.75" PointY="7.625" />
+        <EntityTypeShape EntityType="practiceModel.District" Width="1.5" PointX="1.5" PointY="24.5" />
+        <EntityTypeShape EntityType="practiceModel.EducationLevel" Width="1.5" PointX="6" PointY="20.75" />
+        <EntityTypeShape EntityType="practiceModel.Ethnicity" Width="1.5" PointX="6" PointY="7.875" />
+        <EntityTypeShape EntityType="practiceModel.FiscalYear" Width="1.5" PointX="6" PointY="26" />
+        <EntityTypeShape EntityType="practiceModel.IdType" Width="1.5" PointX="6" PointY="5.375" />
         <EntityTypeShape EntityType="practiceModel.Language" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="practiceModel.Menu" Width="1.5" PointX="3.75" PointY="6.125" />
+        <EntityTypeShape EntityType="practiceModel.Menu" Width="1.5" PointX="3.75" PointY="6.25" />
         <EntityTypeShape EntityType="practiceModel.Missing" Width="1.5" PointX="8.25" PointY="3.625" />
-        <EntityTypeShape EntityType="practiceModel.Municipality" Width="1.5" PointX="6" PointY="18.125" />
-        <EntityTypeShape EntityType="practiceModel.MunicipalityType" Width="1.5" PointX="3.75" PointY="18.75" />
-        <EntityTypeShape EntityType="practiceModel.Office" Width="1.5" PointX="0.75" PointY="16.25" />
-        <EntityTypeShape EntityType="practiceModel.OfficeType" Width="1.5" PointX="1.5" PointY="21.625" />
-        <EntityTypeShape EntityType="practiceModel.Religion" Width="1.5" PointX="6" PointY="15.5" />
-        <EntityTypeShape EntityType="practiceModel.RoleAccess" Width="1.5" PointX="6" PointY="11.375" />
+        <EntityTypeShape EntityType="practiceModel.Municipality" Width="1.5" PointX="6" PointY="1.75" />
+        <EntityTypeShape EntityType="practiceModel.MunicipalityType" Width="1.5" PointX="3.75" PointY="2.375" />
+        <EntityTypeShape EntityType="practiceModel.Office" Width="1.5" PointX="0.75" PointY="16.375" />
+        <EntityTypeShape EntityType="practiceModel.OfficeType" Width="1.5" PointX="1.5" PointY="21.75" />
+        <EntityTypeShape EntityType="practiceModel.Religion" Width="1.5" PointX="6" PointY="18.25" />
+        <EntityTypeShape EntityType="practiceModel.RoleAccess" Width="1.5" PointX="6" PointY="11.5" />
         <EntityTypeShape EntityType="practiceModel.Role" Width="1.5" PointX="0.75" PointY="11.5" />
-        <EntityTypeShape EntityType="practiceModel.State" Width="1.5" PointX="1.5" PointY="27.875" />
-        <EntityTypeShape EntityType="practiceModel.User" Width="1.5" PointX="3" PointY="10.5" />
-        <EntityTypeShape EntityType="practiceModel.Photo" Width="1.5" PointX="2.75" PointY="0.75" />
-        <AssociationConnector Association="practiceModel.FK__Missing__EyeColo__37A5467C" />
-        <AssociationConnector Association="practiceModel.FK__Missing__HairCol__398D8EEE" />
-        <AssociationConnector Association="practiceModel.FK__Missing__Nationa__3B75D760" />
-        <AssociationConnector Association="practiceModel.FK__Users__DesgId__47DBAE45" />
-        <AssociationConnector Association="practiceModel.FK__Districts__State__35BCFE0A" />
-        <AssociationConnector Association="practiceModel.FK__Municipal__DisId__4222D4EF" />
-        <AssociationConnector Association="practiceModel.FK__Offices__DisId__440B1D61" />
-        <AssociationConnector Association="practiceModel.FK__Missing__Educati__36B12243" />
+        <EntityTypeShape EntityType="practiceModel.State" Width="1.5" PointX="1.5" PointY="28" />
+        <EntityTypeShape EntityType="practiceModel.User" Width="1.5" PointX="3" PointY="10.625" />
+        <EntityTypeShape EntityType="practiceModel.Photo" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="false" />
+        <AssociationConnector Association="practiceModel.FK__Missing__EyeColo__5EBF139D" />
+        <AssociationConnector Association="practiceModel.FK__Missing__HairCol__60A75C0F" />
+        <AssociationConnector Association="practiceModel.FK__Missing__Nationa__628FA481" />
+        <AssociationConnector Association="practiceModel.FK__Users__DesgId__02084FDA" />
+        <AssociationConnector Association="practiceModel.FK__Districts__State__5CD6CB2B" />
+        <AssociationConnector Association="practiceModel.FK__Municipal__DisId__693CA210" />
+        <AssociationConnector Association="practiceModel.FK__Offices__DisId__6B24EA82" />
+        <AssociationConnector Association="practiceModel.FK__Missing__Educati__5DCAEF64" />
         <AssociationConnector Association="practiceModel.fk_ethnicity_id" />
-        <AssociationConnector Association="practiceModel.FK__Missing__FiscalY__38996AB5" />
-        <AssociationConnector Association="practiceModel.FK__Missing__IdTypeI__3A81B327" />
-        <AssociationConnector Association="practiceModel.FK__RoleAcces__MenuI__45F365D3" />
-        <AssociationConnector Association="practiceModel.FK__Missing__OfficeI__3C69FB99" />
-        <AssociationConnector Association="practiceModel.FK__Missing__PMunici__3D5E1FD2" />
-        <AssociationConnector Association="practiceModel.FK__Missing__Religio__3E52440B" />
-        <AssociationConnector Association="practiceModel.FK__Missing__TMunici__3F466844" />
-        <AssociationConnector Association="practiceModel.FK__Missing__UserId__403A8C7D" />
-        <AssociationConnector Association="practiceModel.FK__Municipal__MuniT__4316F928" />
-        <AssociationConnector Association="practiceModel.FK__Offices__OfficeT__44FF419A" />
-        <AssociationConnector Association="practiceModel.FK__Users__OfficeId__48CFD27E" />
-        <AssociationConnector Association="practiceModel.FK__RoleAcces__RoleI__46E78A0C" />
-        <AssociationConnector Association="practiceModel.FK__Users__RoleId__49C3F6B7" />
+        <AssociationConnector Association="practiceModel.FK__Missing__FiscalY__5FB337D6" />
+        <AssociationConnector Association="practiceModel.FK__Missing__IdTypeI__619B8048" />
+        <AssociationConnector Association="practiceModel.FK__RoleAcces__MenuI__6D0D32F4" />
+        <AssociationConnector Association="practiceModel.FK__Missing__OfficeI__6383C8BA" />
+        <AssociationConnector Association="practiceModel.FK__Missing__PMunici__6477ECF3" />
+        <AssociationConnector Association="practiceModel.FK__Missing__Religio__656C112C" />
+        <AssociationConnector Association="practiceModel.FK__Missing__TMunici__66603565" />
+        <AssociationConnector Association="practiceModel.FK__Missing__UserId__6754599E" />
+        <AssociationConnector Association="practiceModel.FK__Municipal__MuniT__6A30C649" />
+        <AssociationConnector Association="practiceModel.FK__Offices__OfficeT__6C190EBB" />
+        <AssociationConnector Association="practiceModel.FK__Users__OfficeId__01142BA1" />
+        <AssociationConnector Association="practiceModel.FK__RoleAcces__RoleI__6E01572D" />
+        <AssociationConnector Association="practiceModel.FK__Users__RoleId__6EF57B66" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

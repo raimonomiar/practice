@@ -91,6 +91,7 @@ namespace ApplicationRepository
         public string HandOverDetails { get; set; }
         public string HandOverContactNumber { get; set; }
         public Nullable<System.DateTime> LastSearchActivityDate { get; set; }
+        public string HeightUnit { get; set; }
     
         public virtual Colour Colour { get; set; }
         public virtual Colour Colour1 { get; set; }
