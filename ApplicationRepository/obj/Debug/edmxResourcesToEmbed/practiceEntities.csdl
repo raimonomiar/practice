@@ -25,12 +25,12 @@
     <EntitySet Name="MunicipalityTypes" EntityType="practiceModel.MunicipalityType" />
     <EntitySet Name="Offices" EntityType="practiceModel.Office" />
     <EntitySet Name="OfficeTypes" EntityType="practiceModel.OfficeType" />
+    <EntitySet Name="Photos" EntityType="practiceModel.Photo" />
     <EntitySet Name="Religions" EntityType="practiceModel.Religion" />
     <EntitySet Name="RoleAccesses" EntityType="practiceModel.RoleAccess" />
     <EntitySet Name="Roles" EntityType="practiceModel.Role" />
     <EntitySet Name="States" EntityType="practiceModel.State" />
     <EntitySet Name="Users" EntityType="practiceModel.User" />
-    <EntitySet Name="Photos" EntityType="practiceModel.Photo" />
     <AssociationSet Name="FK__Missing__EyeColo__5EBF139D" Association="practiceModel.FK__Missing__EyeColo__5EBF139D">
       <End Role="Colour" EntitySet="Colours" />
       <End Role="Missing" EntitySet="Missings" />
@@ -98,6 +98,10 @@
     <AssociationSet Name="FK__Missing__UserId__6754599E" Association="practiceModel.FK__Missing__UserId__6754599E">
       <End Role="User" EntitySet="Users" />
       <End Role="Missing" EntitySet="Missings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Photos__MissingI__160F4887" Association="practiceModel.FK__Photos__MissingI__160F4887">
+      <End Role="Missing" EntitySet="Missings" />
+      <End Role="Photo" EntitySet="Photos" />
     </AssociationSet>
     <AssociationSet Name="FK__Municipal__MuniT__6A30C649" Association="practiceModel.FK__Municipal__MuniT__6A30C649">
       <End Role="MunicipalityType" EntitySet="MunicipalityTypes" />
@@ -334,6 +338,7 @@
     <NavigationProperty Name="Religion" Relationship="practiceModel.FK__Missing__Religio__656C112C" FromRole="Missing" ToRole="Religion" />
     <NavigationProperty Name="Municipality1" Relationship="practiceModel.FK__Missing__TMunici__66603565" FromRole="Missing" ToRole="Municipality" />
     <NavigationProperty Name="User" Relationship="practiceModel.FK__Missing__UserId__6754599E" FromRole="Missing" ToRole="User" />
+    <NavigationProperty Name="Photos" Relationship="practiceModel.FK__Photos__MissingI__160F4887" FromRole="Missing" ToRole="Photo" />
   </EntityType>
   <EntityType Name="Municipality">
     <Key>
@@ -388,6 +393,19 @@
     <Property Name="CreatedDate" Type="DateTime" Precision="3" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Offices" Relationship="practiceModel.FK__Offices__OfficeT__6C190EBB" FromRole="OfficeType" ToRole="Office" />
+  </EntityType>
+  <EntityType Name="Photo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Photo1" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="FileExtension" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MissingId" Type="Int32" />
+    <Property Name="filepath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsPhoto" Type="Boolean" />
+    <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Missing" Relationship="practiceModel.FK__Photos__MissingI__160F4887" FromRole="Photo" ToRole="Missing" />
   </EntityType>
   <EntityType Name="Religion">
     <Key>
@@ -455,16 +473,6 @@
     <NavigationProperty Name="Missings" Relationship="practiceModel.FK__Missing__UserId__6754599E" FromRole="User" ToRole="Missing" />
     <NavigationProperty Name="Office" Relationship="practiceModel.FK__Users__OfficeId__01142BA1" FromRole="User" ToRole="Office" />
     <NavigationProperty Name="Role" Relationship="practiceModel.FK__Users__RoleId__6EF57B66" FromRole="User" ToRole="Role" />
-  </EntityType>
-  <EntityType Name="Photo">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UploadedFileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="FilePath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="FileExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="MissingId" Type="Int32" />
   </EntityType>
   <Association Name="FK__Missing__EyeColo__5EBF139D">
     <End Type="practiceModel.Colour" Role="Colour" Multiplicity="0..1" />
@@ -667,6 +675,18 @@
       </Principal>
       <Dependent Role="Missing">
         <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Photos__MissingI__160F4887">
+    <End Type="practiceModel.Missing" Role="Missing" Multiplicity="0..1" />
+    <End Type="practiceModel.Photo" Role="Photo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Missing">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Photo">
+        <PropertyRef Name="MissingId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

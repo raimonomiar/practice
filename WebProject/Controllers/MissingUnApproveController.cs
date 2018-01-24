@@ -149,7 +149,7 @@ namespace WebProject.Controllers
                 {
                     MissingModel = missingModel,
 
-                    PhotoList = photoService.GetAllT().Where(x => x.MissingId == id),
+                    PhotoList = photoService.GetAllT().Where(x => x.MissingId == id) ??  new List<PhotoModel>(),
 
                     GenderList = StaticSelectList.GenderList(),
 
@@ -187,8 +187,9 @@ namespace WebProject.Controllers
 
                     MMunicipalityList = dynamicSelectList.GetDistrictListByStateId(missingModel.MDistrictId),
 
-                    TMunicipalityList = dynamicSelectList.GetMunicipalityListByDistrictId(missingModel.TDistrictId)
-
+                    TMunicipalityList = dynamicSelectList.GetMunicipalityListByDistrictId(missingModel.TDistrictId),
+                   
+               
 
                 };
 

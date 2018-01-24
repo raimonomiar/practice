@@ -15,9 +15,13 @@ namespace ApplicationRepository
     public partial class Photo
     {
         public int Id { get; set; }
-        public string UploadedFileName { get; set; }
-        public string FilePath { get; set; }
+        public byte[] Photo1 { get; set; }
         public string FileExtension { get; set; }
         public Nullable<int> MissingId { get; set; }
+        public string filepath { get; set; }
+        public Nullable<bool> IsPhoto { get; set; }
+        public string Details { get; set; }
+    
+        public virtual Missing Missing { get; set; }
     }
 }

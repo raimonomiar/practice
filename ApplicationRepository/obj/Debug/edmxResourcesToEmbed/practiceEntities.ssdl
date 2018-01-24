@@ -225,17 +225,17 @@
     <Property Name="CreatedDate" Type="datetime" />
     <Property Name="UpdatedDate" Type="datetime" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Photos">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="UploadedFileName" Type="nvarchar" MaxLength="255" />
-    <Property Name="FilePath" Type="nvarchar" MaxLength="255" />
-    <Property Name="FileExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="Photo" Type="varbinary(max)" />
+    <Property Name="FileExtension" Type="varchar" MaxLength="20" />
     <Property Name="MissingId" Type="int" />
+    <Property Name="filepath" Type="varchar(max)" />
+    <Property Name="IsPhoto" Type="bit" />
+    <Property Name="Details" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Religions">
     <Key>
@@ -486,6 +486,18 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Photos__MissingI__160F4887">
+    <End Role="Missing" Type="Self.Missing" Multiplicity="0..1" />
+    <End Role="Photos" Type="Self.Photos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Missing">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Photos">
+        <PropertyRef Name="MissingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__RoleAcces__MenuI__6D0D32F4">
     <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
     <End Role="RoleAccess" Type="Self.RoleAccess" Multiplicity="*" />
@@ -583,20 +595,12 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
     <EntitySet Name="MunicipalityType" EntityType="Self.MunicipalityType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Offices" EntityType="Self.Offices" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OfficeTypes" EntityType="Self.OfficeTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Photos" EntityType="Self.Photos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Religions" EntityType="Self.Religions" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RoleAccess" EntityType="Self.RoleAccess" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Photos" EntityType="Self.Photos" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [Photos].[Id] AS [Id], 
-    [Photos].[UploadedFileName] AS [UploadedFileName], 
-    [Photos].[FilePath] AS [FilePath], 
-    [Photos].[FileExtension] AS [FileExtension], 
-    [Photos].[MissingId] AS [MissingId]
-    FROM [dbo].[Photos] AS [Photos]</DefiningQuery>
-    </EntitySet>
     <AssociationSet Name="FK__Districts__State__5CD6CB2B" Association="Self.FK__Districts__State__5CD6CB2B">
       <End Role="States" EntitySet="States" />
       <End Role="Districts" EntitySet="Districts" />
@@ -660,6 +664,10 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
     <AssociationSet Name="FK__Offices__OfficeT__6C190EBB" Association="Self.FK__Offices__OfficeT__6C190EBB">
       <End Role="OfficeTypes" EntitySet="OfficeTypes" />
       <End Role="Offices" EntitySet="Offices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Photos__MissingI__160F4887" Association="Self.FK__Photos__MissingI__160F4887">
+      <End Role="Missing" EntitySet="Missing" />
+      <End Role="Photos" EntitySet="Photos" />
     </AssociationSet>
     <AssociationSet Name="FK__RoleAcces__MenuI__6D0D32F4" Association="Self.FK__RoleAcces__MenuI__6D0D32F4">
       <End Role="Menu" EntitySet="Menu" />

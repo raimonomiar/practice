@@ -229,22 +229,21 @@ namespace ApplicationService.GlobalSelectList
 
         public IEnumerable<SelectListItem> GetDistrictListByStateId(int? stateId = 0)
         {
-            var districts = new List<SelectListItem>();
+            var districtList = new List<SelectListItem>();
 
-            if (stateId != 0)
+            var districts = stateId != 0 ? unitOfWork.DistrictRepository
+                .Get(x => x.StateId == stateId).ToList() : unitOfWork.DistrictRepository.All().ToList();
+
+            foreach (var item in districts)
             {
-                districts = unitOfWork.DistrictRepository
-                    .Get(x => x.StateId == stateId)
-                    .Select(x => new SelectListItem
-                    {
-                        Value = x.Id.ToString(),
-                        Text = x.DistrictNameEng,
-                        Selected = stateId == x.StateId
-                    })
-                    .ToList();
+                districtList.Add(new SelectListItem
+                {
+                    Text = item.DistrictNameEng,
+                    Value = item.Id.ToString(),
+                    Selected = stateId == item.StateId
+                });
             }
-
-            return districts;
+            return districtList;
             
         }
 

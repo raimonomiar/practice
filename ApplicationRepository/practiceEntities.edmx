@@ -230,17 +230,17 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="UpdatedDate" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Photos">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UploadedFileName" Type="nvarchar" MaxLength="255" />
-          <Property Name="FilePath" Type="nvarchar" MaxLength="255" />
-          <Property Name="FileExtension" Type="nvarchar" MaxLength="50" />
+          <Property Name="Photo" Type="varbinary(max)" />
+          <Property Name="FileExtension" Type="varchar" MaxLength="20" />
           <Property Name="MissingId" Type="int" />
+          <Property Name="filepath" Type="varchar(max)" />
+          <Property Name="IsPhoto" Type="bit" />
+          <Property Name="Details" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Religions">
           <Key>
@@ -491,6 +491,18 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Photos__MissingI__160F4887">
+          <End Role="Missing" Type="Self.Missing" Multiplicity="0..1" />
+          <End Role="Photos" Type="Self.Photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Missing">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Photos">
+              <PropertyRef Name="MissingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__RoleAcces__MenuI__6D0D32F4">
           <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
           <End Role="RoleAccess" Type="Self.RoleAccess" Multiplicity="*" />
@@ -588,20 +600,12 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
           <EntitySet Name="MunicipalityType" EntityType="Self.MunicipalityType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Offices" EntityType="Self.Offices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OfficeTypes" EntityType="Self.OfficeTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Photos" EntityType="Self.Photos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Religions" EntityType="Self.Religions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleAccess" EntityType="Self.RoleAccess" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Photos" EntityType="Self.Photos" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Photos].[Id] AS [Id], 
-    [Photos].[UploadedFileName] AS [UploadedFileName], 
-    [Photos].[FilePath] AS [FilePath], 
-    [Photos].[FileExtension] AS [FileExtension], 
-    [Photos].[MissingId] AS [MissingId]
-    FROM [dbo].[Photos] AS [Photos]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK__Districts__State__5CD6CB2B" Association="Self.FK__Districts__State__5CD6CB2B">
             <End Role="States" EntitySet="States" />
             <End Role="Districts" EntitySet="Districts" />
@@ -666,6 +670,10 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
             <End Role="OfficeTypes" EntitySet="OfficeTypes" />
             <End Role="Offices" EntitySet="Offices" />
           </AssociationSet>
+          <AssociationSet Name="FK__Photos__MissingI__160F4887" Association="Self.FK__Photos__MissingI__160F4887">
+            <End Role="Missing" EntitySet="Missing" />
+            <End Role="Photos" EntitySet="Photos" />
+          </AssociationSet>
           <AssociationSet Name="FK__RoleAcces__MenuI__6D0D32F4" Association="Self.FK__RoleAcces__MenuI__6D0D32F4">
             <End Role="Menu" EntitySet="Menu" />
             <End Role="RoleAccess" EntitySet="RoleAccess" />
@@ -720,12 +728,12 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
           <EntitySet Name="MunicipalityTypes" EntityType="practiceModel.MunicipalityType" />
           <EntitySet Name="Offices" EntityType="practiceModel.Office" />
           <EntitySet Name="OfficeTypes" EntityType="practiceModel.OfficeType" />
+          <EntitySet Name="Photos" EntityType="practiceModel.Photo" />
           <EntitySet Name="Religions" EntityType="practiceModel.Religion" />
           <EntitySet Name="RoleAccesses" EntityType="practiceModel.RoleAccess" />
           <EntitySet Name="Roles" EntityType="practiceModel.Role" />
           <EntitySet Name="States" EntityType="practiceModel.State" />
           <EntitySet Name="Users" EntityType="practiceModel.User" />
-          <EntitySet Name="Photos" EntityType="practiceModel.Photo" />
           <AssociationSet Name="FK__Missing__EyeColo__5EBF139D" Association="practiceModel.FK__Missing__EyeColo__5EBF139D">
             <End Role="Colour" EntitySet="Colours" />
             <End Role="Missing" EntitySet="Missings" />
@@ -793,6 +801,10 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
           <AssociationSet Name="FK__Missing__UserId__6754599E" Association="practiceModel.FK__Missing__UserId__6754599E">
             <End Role="User" EntitySet="Users" />
             <End Role="Missing" EntitySet="Missings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Photos__MissingI__160F4887" Association="practiceModel.FK__Photos__MissingI__160F4887">
+            <End Role="Missing" EntitySet="Missings" />
+            <End Role="Photo" EntitySet="Photos" />
           </AssociationSet>
           <AssociationSet Name="FK__Municipal__MuniT__6A30C649" Association="practiceModel.FK__Municipal__MuniT__6A30C649">
             <End Role="MunicipalityType" EntitySet="MunicipalityTypes" />
@@ -1029,6 +1041,7 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
           <NavigationProperty Name="Religion" Relationship="practiceModel.FK__Missing__Religio__656C112C" FromRole="Missing" ToRole="Religion" />
           <NavigationProperty Name="Municipality1" Relationship="practiceModel.FK__Missing__TMunici__66603565" FromRole="Missing" ToRole="Municipality" />
           <NavigationProperty Name="User" Relationship="practiceModel.FK__Missing__UserId__6754599E" FromRole="Missing" ToRole="User" />
+          <NavigationProperty Name="Photos" Relationship="practiceModel.FK__Photos__MissingI__160F4887" FromRole="Missing" ToRole="Photo" />
         </EntityType>
         <EntityType Name="Municipality">
           <Key>
@@ -1083,6 +1096,19 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Offices" Relationship="practiceModel.FK__Offices__OfficeT__6C190EBB" FromRole="OfficeType" ToRole="Office" />
+        </EntityType>
+        <EntityType Name="Photo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Photo1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FileExtension" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MissingId" Type="Int32" />
+          <Property Name="filepath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsPhoto" Type="Boolean" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Missing" Relationship="practiceModel.FK__Photos__MissingI__160F4887" FromRole="Photo" ToRole="Missing" />
         </EntityType>
         <EntityType Name="Religion">
           <Key>
@@ -1150,16 +1176,6 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
           <NavigationProperty Name="Missings" Relationship="practiceModel.FK__Missing__UserId__6754599E" FromRole="User" ToRole="Missing" />
           <NavigationProperty Name="Office" Relationship="practiceModel.FK__Users__OfficeId__01142BA1" FromRole="User" ToRole="Office" />
           <NavigationProperty Name="Role" Relationship="practiceModel.FK__Users__RoleId__6EF57B66" FromRole="User" ToRole="Role" />
-        </EntityType>
-        <EntityType Name="Photo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UploadedFileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="FilePath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="FileExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MissingId" Type="Int32" />
         </EntityType>
         <Association Name="FK__Missing__EyeColo__5EBF139D">
           <End Type="practiceModel.Colour" Role="Colour" Multiplicity="0..1" />
@@ -1362,6 +1378,18 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
             </Principal>
             <Dependent Role="Missing">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Photos__MissingI__160F4887">
+          <End Type="practiceModel.Missing" Role="Missing" Multiplicity="0..1" />
+          <End Type="practiceModel.Photo" Role="Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Missing">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Photo">
+              <PropertyRef Name="MissingId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1685,6 +1713,19 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Photos">
+            <EntityTypeMapping TypeName="practiceModel.Photo">
+              <MappingFragment StoreEntitySet="Photos">
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="IsPhoto" ColumnName="IsPhoto" />
+                <ScalarProperty Name="filepath" ColumnName="filepath" />
+                <ScalarProperty Name="MissingId" ColumnName="MissingId" />
+                <ScalarProperty Name="FileExtension" ColumnName="FileExtension" />
+                <ScalarProperty Name="Photo1" ColumnName="Photo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Religions">
             <EntityTypeMapping TypeName="practiceModel.Religion">
               <MappingFragment StoreEntitySet="Religions">
@@ -1744,17 +1785,6 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
                 <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Photos">
-            <EntityTypeMapping TypeName="practiceModel.Photo">
-              <MappingFragment StoreEntitySet="Photos">
-                <ScalarProperty Name="MissingId" ColumnName="MissingId" />
-                <ScalarProperty Name="FileExtension" ColumnName="FileExtension" />
-                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
-                <ScalarProperty Name="UploadedFileName" ColumnName="UploadedFileName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace ApplicationService.Implementation
 {
@@ -51,6 +52,15 @@ namespace ApplicationService.Implementation
             var photo = Mapper.PhotoMapper.PhotoModelToPhoto(model); ;
 
             unitOfWork.PhotoRepository.Update(photo);
+        }
+
+        public byte[] GetPhoto(HttpPostedFileBase File,MissingModel model,IEnumerable<HttpPostedFileBase> Files )
+        {
+            var photo = new byte[File.ContentLength];
+
+            File.InputStream.Read(photo, 0, File.ContentLength);
+
+            return photo;
         }
     }
 }
