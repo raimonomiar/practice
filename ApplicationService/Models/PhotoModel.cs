@@ -16,13 +16,22 @@ namespace ApplicationService.Models
         [StringLength(150)]
         public string UploadedFileName { get; set; }
 
+        [Display(Name ="File")]
+        public byte[] Photo { get; set; }
+
+
         [StringLength(255)]
         public string FilePath { get; set; }
 
-        [StringLength(255)]
-        public string FileDetails { get; set; }
+
 
         [StringLength(50)]
         public string FileExtension { get; set; }
+        
+
+        [Display(Name ="File Details")]
+        public string Detail { get; set; }
+
+        public bool? IsPhoto { get; set; }
     }
 }

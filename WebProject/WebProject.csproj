@@ -176,6 +176,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Api\DropdownListController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Configuration\ColourController.cs" />
     <Compile Include="Controllers\Configuration\DesignationController.cs" />
@@ -1218,6 +1219,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Designation\" />
+    <Folder Include="Views\DropdownList\" />
     <Folder Include="Views\Education\" />
     <Folder Include="Views\Fiscal\" />
     <Folder Include="Views\Missing\" />

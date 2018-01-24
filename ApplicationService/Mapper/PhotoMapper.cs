@@ -14,12 +14,13 @@ namespace ApplicationService.Mapper
         {
             var photo = new Photo
             {
-                Id = model.Id,
-                FileExtension = model.FileExtension,
-                MissingId = model.MissingId,
-                FilePath = model.FilePath,
-                UploadedFileName = model.UploadedFileName
-
+              Id = model.Id,
+              MissingId = model.MissingId,
+              Photo1 = model.Photo,
+              FileExtension = model.FileExtension,
+              FilePath = model.FilePath,
+              Detail = model.Detail,
+              IsPhoto = model.IsPhoto
             };
 
             return photo;
@@ -30,10 +31,12 @@ namespace ApplicationService.Mapper
             var photoModel = new PhotoModel
             {
                 Id = model.Id,
-                FileExtension = model.FileExtension,
                 MissingId = model.MissingId,
+                Photo = model.Photo1,
+                FileExtension = model.FileExtension,
                 FilePath = model.FilePath,
-                UploadedFileName = model.UploadedFileName
+                Detail = model.Detail,
+                IsPhoto = model.IsPhoto
 
             };
 
@@ -49,10 +52,12 @@ namespace ApplicationService.Mapper
                 photoModelList.Add(new PhotoModel
                 {
                     Id = model.Id,
-                    FileExtension = model.FileExtension,
                     MissingId = model.MissingId,
+                    Photo = model.Photo1,
+                    FileExtension = model.FileExtension,
                     FilePath = model.FilePath,
-                    UploadedFileName = model.UploadedFileName
+                    Detail = model.Detail,
+                    IsPhoto = model.IsPhoto
 
                 });
             }

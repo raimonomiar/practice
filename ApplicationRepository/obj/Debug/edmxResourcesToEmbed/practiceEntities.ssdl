@@ -232,10 +232,12 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="UploadedFileName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Detail" Type="nvarchar" MaxLength="255" />
     <Property Name="FilePath" Type="nvarchar" MaxLength="255" />
     <Property Name="FileExtension" Type="nvarchar" MaxLength="50" />
     <Property Name="MissingId" Type="int" />
+    <Property Name="Photo" Type="varbinary(max)" />
+    <Property Name="IsPhoto" Type="bit" />
   </EntityType>
   <EntityType Name="Religions">
     <Key>
@@ -591,10 +593,12 @@ warning 6002: The table/view 'practice.dbo.Photos' does not have a primary key d
     <EntitySet Name="Photos" EntityType="Self.Photos" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [Photos].[Id] AS [Id], 
-    [Photos].[UploadedFileName] AS [UploadedFileName], 
+    [Photos].[Detail] AS [Detail], 
     [Photos].[FilePath] AS [FilePath], 
     [Photos].[FileExtension] AS [FileExtension], 
-    [Photos].[MissingId] AS [MissingId]
+    [Photos].[MissingId] AS [MissingId], 
+    [Photos].[Photo] AS [Photo], 
+    [Photos].[IsPhoto] AS [IsPhoto]
     FROM [dbo].[Photos] AS [Photos]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK__Districts__State__35BCFE0A" Association="Self.FK__Districts__State__35BCFE0A">

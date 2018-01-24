@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <div class="row">
@@ -179,7 +180,6 @@
                     </div>
                     <hr class="col-md-12" />
                     <h4 class="text-center">Identification Details</h4>
-
                     <hr />
                     <div class="col-md-6">
                         <div class="form-group">
@@ -223,7 +223,7 @@
                             @Html.ValidationMessageFor(x => x.MissingModel.SpecialIdentifier, null, new { @class = "text-red" })
                         </div>
                     </div>
-                    <div  class="col-md-6">
+                    <div class="col-md-6">
                         <div class="form-group">
                             @Html.LabelFor(x => x.MissingModel.Weight, new { @class = "col-sm-4 control-label" })
                             <div class="col-sm-8">
@@ -248,12 +248,153 @@
                         <div class="form-group">
                             @Html.LabelFor(x => x.MissingModel.Photo, new { @class = "col-sm-4 control-label" })
                             <div class="col-sm-8">
-                                <input type="file" id="file" />
+                                <input type="file" name="file" id="file" />
                                 <p class="help-block">Upload Image Files only for eg. <i>Jpeg,Jpg,PNG</i></p>
+                                @if (true)
+                                {
+                                    <img src="" class="img-thumbnail" style="width:50px" />
+                                }
                             </div>
                             @Html.ValidationMessageFor(x => x.MissingModel.Photo, null, new { @class = "text-red" })
+                        
+                        </div>
+                       
+                    </div>
+
+                    <hr class="col-md-12" />
+                    <h4 class="text-center col-md-12">Additional Files</h4>
+                    <hr class="col-md-12"/>
+
+                    <div class="col-md-6">
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Files </h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th style="width: 10px">S.N</th>
+                                        <th>@Html.DisplayNameFor(x => x.PhotoList.SingleOrDefault().Detail)</th>
+                                        <th>@Html.DisplayNameFor(x => x.PhotoList.SingleOrDefault().Photo)</th>
+                                        <th style="width: 40px">Action</th>
+                                    </tr>
+                                    @foreach (var item in Model.PhotoList)
+                                    {
+                                        var i = 1;
+
+                                        if (item.IsPhoto == false)
+                                        {
+                                            <tr>
+                                                <td>i</td>
+                                                <td>@Html.DisplayFor(x => item.Detail)</td>
+                                                <td>
+                                                    photos here
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="btn btn-primary del" data-id="@item.Id"><i class="fa fa-trash-o pull-left"></i></a>
+
+                                                </td>
+                                            </tr>
+                                            i++;
+                                        }
+
+
+                                    }
+
+                                </table>
+                            </div>
+                            <!-- /.box-body -->
+
+                        </div>
+                        <!-- /.box -->
+                        <!-- /.box -->
+                    </div>
+
+                    <div class="col-md-6">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Add Files </h3>
+                            <span class="pull-right">
+                                <a class="btn btn-primary add" href="Javascript:void(0)"><i class="fa fa-plus"></i> Add New</a>
+                            </span>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <table class="table table-bordered uploadTable">
+
+                                <tr>
+                       
+                                    <th>@Html.DisplayNameFor(x=>x.PhotoList.SingleOrDefault().Detail)</th>
+                                    <th>@Html.DisplayNameFor(x=>x.PhotoList.SingleOrDefault().Photo)</th>
+                                    <th style="width: 40px">Action</th>
+                                </tr>
+                                
+                                
+                                
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                     
+                    </div>
+                    <!-- /.box -->
+                    
+                    <!-- /.box -->
+                </div>
+                    <hr class="col-md-12" />
+                    <h4 class="text-center">Permanent Address</h4>
+                    <hr />
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.PStateId, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.DropDownListFor(x => x.MissingModel.PStateId, Model.StateList, "Select State", new { @class = "form-control", id="state" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.PStateId, null, new { @class = "text-red" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.PMunicipalityId, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.DropDownListFor(x => x.MissingModel.PMunicipalityId, Model.PMunicipalityList, "Select Municipality", new { @class = "form-control",id="municipality" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.PMunicipalityId, null, new { @class = "text-red" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.PToleName, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(x => x.MissingModel.PToleName, new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.PToleName, null, new { @class = "text-red" })
+                        </div>
+                       
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.PDistrictId, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.DropDownListFor(x => x.MissingModel.PDistrictId, Model.PDistrictList, "Select District", new { @class = "form-control", id="district" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.PDistrictId, null, new { @class = "text-red" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.PWardNumber, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(x => x.MissingModel.PWardNumber, new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.PWardNumber, null, new { @class = "text-red" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MissingModel.PContactNumber, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(x => x.MissingModel.PContactNumber, new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.PContactNumber, null, new { @class = "text-red" })
                         </div>
                     </div>
+
                 </div>
         <!-- /.box-body -->
                 <div class="box-footer">
@@ -267,3 +408,104 @@
         <!-- general form elements disabled -->
     </div>
 </div>
+
+@section scripts{
+    
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $(".add").click(function() {
+
+                $(".uploadTable tr:last").after("<tr> <td><input type='text' name='detail' value='' class='form-control'/> </td><td><input type='file' name='files' id='file'/> </td><td> <a href='Javascript:void(0)' class='btn btn-primary delI' ><i class='fa fa-trash-o pull-left'></i></a></td> </tr> ");
+
+            });
+
+            //$(".delI").click(function (e) {
+
+               
+                
+            //});
+
+            $(document).on("click", ".delI", function (e) {
+
+                $(e.target).parents("tr").fadeOut(function () {
+
+                    $(this).remove();
+                });
+            });
+
+            $("#state").change(function () {
+
+                var selectedState = $("#state").val();
+
+                var districtSelect = $("#district");
+
+                districtSelect.empty();
+
+                if (selectedState != null && selectedState != 0) {
+
+                    $.ajax({
+                        url: "/api/dropdownlist/getdistrict/" + selectedState,
+                        method: "GET",
+                        success: function (districts) {
+                            if (districts != null && !jQuery.isEmptyObject(districts)) {
+
+                                districtSelect.append($('<option/>', {
+                                    value: null,
+                                    text: ""
+                                }));
+
+                                $.each(districts, function (index, district) {
+
+                                    districtSelect.append($('<option/>', {
+
+                                        value: district.Value,
+                                        text: district.Text
+                                    }));
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+
+            $("#district").change(function () {
+
+                var selectedDistrict= $("#district").val();
+
+                var municipalitySelect = $("#municipality");
+
+                municipalitySelect.empty();
+
+                if (selectedDistrict != null && selectedDistrict!= 0) {
+
+                    $.ajax({
+                        url: "/api/dropdownlist/getmunicipality/" + selectedDistrict,
+                        method: "GET",
+                        success: function (municipalities) {
+                            if (municipalities != null && !jQuery.isEmptyObject(municipalities)) {
+
+                                municipalitySelect.append($('<option/>', {
+                                    value: null,
+                                    text: ""
+                                }));
+
+                                $.each(municipalities, function (index, municipality) {
+
+                                    municipalitySelect.append($('<option/>', {
+
+                                        value: municipality.Value,
+                                        text: municipality.Text
+                                    }));
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
+    </script>
+    
+    }
