@@ -18,8 +18,8 @@ namespace ApplicationService.Mapper
               MissingId = model.MissingId,
               Photo1 = model.Photo,
               FileExtension = model.FileExtension,
-              FilePath = model.FilePath,
-              Detail = model.Detail,
+              filepath = model.FilePath,
+              Details = model.Detail,
               IsPhoto = model.IsPhoto
             };
 
@@ -34,8 +34,8 @@ namespace ApplicationService.Mapper
                 MissingId = model.MissingId,
                 Photo = model.Photo1,
                 FileExtension = model.FileExtension,
-                FilePath = model.FilePath,
-                Detail = model.Detail,
+                FilePath = model.filepath,
+                Detail = model.Details,
                 IsPhoto = model.IsPhoto
 
             };
@@ -55,8 +55,8 @@ namespace ApplicationService.Mapper
                     MissingId = model.MissingId,
                     Photo = model.Photo1,
                     FileExtension = model.FileExtension,
-                    FilePath = model.FilePath,
-                    Detail = model.Detail,
+                    FilePath = model.filepath,
+                    Detail = model.Details,
                     IsPhoto = model.IsPhoto
 
                 });

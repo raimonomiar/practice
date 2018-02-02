@@ -14,6 +14,12 @@ namespace ApplicationRepository
     
     public partial class Missing
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Missing()
+        {
+            this.Photos = new HashSet<Photo>();
+        }
+    
         public int Id { get; set; }
         public int RegistrationNumber { get; set; }
         public Nullable<int> OfficeId { get; set; }
@@ -105,5 +111,7 @@ namespace ApplicationRepository
         public virtual Religion Religion { get; set; }
         public virtual Municipality Municipality1 { get; set; }
         public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Photo> Photos { get; set; }
     }
 }

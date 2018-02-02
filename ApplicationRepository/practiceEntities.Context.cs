@@ -42,12 +42,12 @@ namespace ApplicationRepository
         public virtual DbSet<MunicipalityType> MunicipalityTypes { get; set; }
         public virtual DbSet<Office> Offices { get; set; }
         public virtual DbSet<OfficeType> OfficeTypes { get; set; }
+        public virtual DbSet<Photo> Photos { get; set; }
         public virtual DbSet<Religion> Religions { get; set; }
         public virtual DbSet<RoleAccess> RoleAccesses { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<State> States { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Photo> Photos { get; set; }
     
         public virtual ObjectResult<spMissingMatches_Result> spMissingMatches(string fname, string lname, string aliasName, Nullable<System.DateTime> dob, string gender, string fatherName, string motherName)
         {
