@@ -87,7 +87,7 @@
                         <div class="form-group">
                             @Html.LabelFor(x => x.MissingModel.DOB, new { @class = "col-sm-4 control-label" })
                             <div class="col-sm-5">
-                                @Html.TextBoxFor(x => x.MissingModel.DOB, new { @class = "form-control pull-right", id = "datepicker" })
+                                @Html.TextBoxFor(x => x.MissingModel.DOB, new { @class = "form-control pull-right datepicker"})
                             </div>
                             @Html.ValidationMessageFor(x => x.MissingModel.DOB, null, new { @class = "text-red" })
                             <div class="col-sm-3">
@@ -344,162 +344,268 @@
                     <hr class="col-md-12" />
                     <h4 class="text-center col-md-12">Permanent Address</h4>
                     <hr class="col-md-12"/>
-                    
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.MissingModel.PStateId, new { @class = "col-sm-4 control-label" })
-                            <div class="col-sm-8">
-                                @Html.DropDownListFor(x => x.MissingModel.PStateId, Model.StateList, "Select State", new { @class = "form-control", id="state" })
+                    <div class="element-row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.MissingModel.PStateId, new { @class = "col-sm-4 control-label" })
+                                <div class="col-sm-8">
+                                    @Html.DropDownListFor(x => x.MissingModel.PStateId, Model.StateList, "Select State", new { @class = "form-control state" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.MissingModel.PStateId, null, new { @class = "text-red" })
                             </div>
-                            @Html.ValidationMessageFor(x => x.MissingModel.PStateId, null, new { @class = "text-red" })
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.MissingModel.PMunicipalityId, new { @class = "col-sm-4 control-label" })
-                            <div class="col-sm-8">
-                                @Html.DropDownListFor(x => x.MissingModel.PMunicipalityId, Model.PMunicipalityList, "Select Municipality", new { @class = "form-control",id="municipality",disabled="disabled" })
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.MissingModel.PMunicipalityId, new { @class = "col-sm-4 control-label" })
+                                <div class="col-sm-8">
+                                    @Html.DropDownListFor(x => x.MissingModel.PMunicipalityId, Model.PMunicipalityList, "Select Municipality", new { @class = "form-control municipality", disabled = "disabled" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.MissingModel.PMunicipalityId, null, new { @class = "text-red" })
                             </div>
-                            @Html.ValidationMessageFor(x => x.MissingModel.PMunicipalityId, null, new { @class = "text-red" })
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.MissingModel.PToleName, new { @class = "col-sm-4 control-label" })
-                            <div class="col-sm-8">
-                                @Html.TextBoxFor(x => x.MissingModel.PToleName, new { @class = "form-control" })
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.MissingModel.PToleName, new { @class = "col-sm-4 control-label" })
+                                <div class="col-sm-8">
+                                    @Html.TextBoxFor(x => x.MissingModel.PToleName, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.MissingModel.PToleName, null, new { @class = "text-red" })
                             </div>
-                            @Html.ValidationMessageFor(x => x.MissingModel.PToleName, null, new { @class = "text-red" })
-                        </div>
-                       
 
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.MissingModel.PDistrictId, new { @class = "col-sm-4 control-label" })
-                            <div class="col-sm-8">
-                                @Html.DropDownListFor(x => x.MissingModel.PDistrictId, Model.PDistrictList, "Select District", new { @class = "form-control", id="district",disabled="disabled"})
-                            </div>
-                            @Html.ValidationMessageFor(x => x.MissingModel.PDistrictId, null, new { @class = "text-red" })
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.MissingModel.PWardNumber, new { @class = "col-sm-4 control-label" })
-                            <div class="col-sm-8">
-                                @Html.TextBoxFor(x => x.MissingModel.PWardNumber, new { @class = "form-control" })
-                            </div>
-                            @Html.ValidationMessageFor(x => x.MissingModel.PWardNumber, null, new { @class = "text-red" })
-                        </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.MissingModel.PContactNumber, new { @class = "col-sm-4 control-label" })
-                            <div class="col-sm-8">
-                                @Html.TextBoxFor(x => x.MissingModel.PContactNumber, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.MissingModel.PDistrictId, new { @class = "col-sm-4 control-label" })
+                                <div class="col-sm-8">
+                                    @Html.DropDownListFor(x => x.MissingModel.PDistrictId, Model.PDistrictList, "Select District", new { @class = "form-control district", disabled = "disabled" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.MissingModel.PDistrictId, null, new { @class = "text-red" })
                             </div>
-                            @Html.ValidationMessageFor(x => x.MissingModel.PContactNumber, null, new { @class = "text-red" })
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.MissingModel.PWardNumber, new { @class = "col-sm-4 control-label" })
+                                <div class="col-sm-8">
+                                    @Html.TextBoxFor(x => x.MissingModel.PWardNumber, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.MissingModel.PWardNumber, null, new { @class = "text-red" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.MissingModel.PContactNumber, new { @class = "col-sm-4 control-label" })
+                                <div class="col-sm-8">
+                                    @Html.TextBoxFor(x => x.MissingModel.PContactNumber, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.MissingModel.PContactNumber, null, new { @class = "text-red" })
+                            </div>
                         </div>
                     </div>
                     <hr class="col-md-12" />
                     <h4 class="text-center col-md-12">Temporary Address</h4>
                     <hr class="col-md-12" />
+                    <div class="element-row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.MissingModel.TStateId, new { @class = "col-sm-4 control-label" })
+                                <div class="col-sm-8">
+                                    @Html.DropDownListFor(x => x.MissingModel.TStateId, Model.StateList, "Select State", new { @class = "form-control state" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.MissingModel.TStateId, null, new { @class = "text-red" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.MissingModel.TMunicipalityId, new { @class = "col-sm-4 control-label" })
+                                <div class="col-sm-8">
+                                    @Html.DropDownListFor(x => x.MissingModel.TMunicipalityId, Model.PMunicipalityList, "Select Municipality", new { @class = "form-control municipality", disabled = "disabled" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.MissingModel.TMunicipalityId, null, new { @class = "text-red" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.MissingModel.TToleName, new { @class = "col-sm-4 control-label" })
+                                <div class="col-sm-8">
+                                    @Html.TextBoxFor(x => x.MissingModel.TToleName, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.MissingModel.TToleName, null, new { @class = "text-red" })
+                            </div>
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.MissingModel.TStateId, new { @class = "col-sm-4 control-label" })
-                            <div class="col-sm-8">
-                                @Html.DropDownListFor(x => x.MissingModel.TStateId, Model.StateList, "Select State", new { @class = "form-control", id = "state1" })
-                            </div>
-                            @Html.ValidationMessageFor(x => x.MissingModel.TStateId, null, new { @class = "text-red" })
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.MissingModel.TMunicipalityId, new { @class = "col-sm-4 control-label" })
-                            <div class="col-sm-8">
-                                @Html.DropDownListFor(x => x.MissingModel.TMunicipalityId, Model.PMunicipalityList, "Select Municipality", new { @class = "form-control", id = "municipality1", disabled = "disabled" })
-                            </div>
-                            @Html.ValidationMessageFor(x => x.MissingModel.TMunicipalityId, null, new { @class = "text-red" })
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.MissingModel.TToleName, new { @class = "col-sm-4 control-label" })
-                            <div class="col-sm-8">
-                                @Html.TextBoxFor(x => x.MissingModel.TToleName, new { @class = "form-control" })
-                            </div>
-                            @Html.ValidationMessageFor(x => x.MissingModel.TToleName, null, new { @class = "text-red" })
-                        </div>
 
-
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.MissingModel.TDistrictId, new { @class = "col-sm-4 control-label" })
-                            <div class="col-sm-8">
-                                @Html.DropDownListFor(x => x.MissingModel.TDistrictId, Model.PDistrictList, "Select District", new { @class = "form-control", id = "district1", disabled = "disabled" })
-                            </div>
-                            @Html.ValidationMessageFor(x => x.MissingModel.TDistrictId, null, new { @class = "text-red" })
                         </div>
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.MissingModel.TWardNumber, new { @class = "col-sm-4 control-label" })
-                            <div class="col-sm-8">
-                                @Html.TextBoxFor(x => x.MissingModel.TWardNumber, new { @class = "form-control" })
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.MissingModel.TDistrictId, new { @class = "col-sm-4 control-label" })
+                                <div class="col-sm-8">
+                                    @Html.DropDownListFor(x => x.MissingModel.TDistrictId, Model.PDistrictList, "Select District", new { @class = "form-control district", disabled = "disabled" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.MissingModel.TDistrictId, null, new { @class = "text-red" })
                             </div>
-                            @Html.ValidationMessageFor(x => x.MissingModel.TWardNumber, null, new { @class = "text-red" })
-                        </div>
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.MissingModel.TWardNumber, new { @class = "col-sm-4 control-label" })
+                                <div class="col-sm-8">
+                                    @Html.TextBoxFor(x => x.MissingModel.TWardNumber, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.MissingModel.TWardNumber, null, new { @class = "text-red" })
+                            </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.MissingModel.TContactNumber, new { @class = "col-sm-4 control-label" })
-                            <div class="col-sm-8">
-                                @Html.TextBoxFor(x => x.MissingModel.TContactNumber, new { @class = "form-control" })
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.MissingModel.TContactNumber, new { @class = "col-sm-4 control-label" })
+                                <div class="col-sm-8">
+                                    @Html.TextBoxFor(x => x.MissingModel.TContactNumber, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.MissingModel.TContactNumber, null, new { @class = "text-red" })
                             </div>
-                            @Html.ValidationMessageFor(x => x.MissingModel.TContactNumber, null, new { @class = "text-red" })
                         </div>
                     </div>
                     <hr class="col-md-12" />
-                    <h4 class="text-center col-md-12">Missing Information</h4>
+                    <h4 class="text-center col-md-12">Missing Address</h4>
                     <hr class="col-md-12" />
+                    <div class="element-row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.MissingModel.MStateId, new { @class = "col-sm-4 control-label" })
+                                <div class="col-sm-8">
+                                    @Html.DropDownListFor(x => x.MissingModel.MStateId, Model.StateList, "Select State", new { @class = "form-control state" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.MissingModel.MStateId, null, new { @class = "text-red" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.MissingModel.MMunicipalityId, new { @class = "col-sm-4 control-label" })
+                                <div class="col-sm-8">
+                                    @Html.DropDownListFor(x => x.MissingModel.MMunicipalityId, Model.MMunicipalityList, "Select Municipality", new { @class = "form-control municipality", disabled = "disabled" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.MissingModel.MMunicipalityId, null, new { @class = "text-red" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.MissingModel.MToleName, new { @class = "col-sm-4 control-label" })
+                                <div class="col-sm-8">
+                                    @Html.TextBoxFor(x => x.MissingModel.MToleName, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.MissingModel.MToleName, null, new { @class = "text-red" })
+                            </div>
+                            <div class="bootstrap-timepicker">
+                                <div class="form-group">
+                                    @Html.LabelFor(x => x.MissingModel.LastSeenTime, new { @class = "col-sm-4 control-label" })
+                                    <div class="col-sm-8">
+                                        <div class="input-group">
 
+                                            @Html.TextBoxFor(x => x.MissingModel.LastSeenTime, new { @class = "form-control timepicker" })
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-clock-o"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @Html.ValidationMessageFor(x => x.MissingModel.LastSeenTime, null, new { @class = "text-red" })
+
+
+                                </div>
+                            </div>
+                            <!-- /.form group -->
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.MissingModel.MDistrictId, new { @class = "col-sm-4 control-label" })
+                                <div class="col-sm-8">
+                                    @Html.DropDownListFor(x => x.MissingModel.MDistrictId, Model.MDistrictList, "Select District", new { @class = "form-control district", disabled = "disabled" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.MissingModel.MDistrictId, null, new { @class = "text-red" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.MissingModel.MWardNumber, new { @class = "col-sm-4 control-label" })
+                                <div class="col-sm-8">
+                                    @Html.TextBoxFor(x => x.MissingModel.MWardNumber, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.MissingModel.MWardNumber, null, new { @class = "text-red" })
+                            </div>
+                            <div class="form-group">
+
+                                @Html.LabelFor(x => x.MissingModel.LastSeenDate, new { @class = "col-sm-4 control-label" })
+                                <div class="col-sm-8">
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    @Html.TextBoxFor(x => x.MissingModel.LastSeenDate, new { @class = "form-control pull-right datepicker" })
+
+
+                                </div>
+                                </div>
+                                @Html.ValidationMessageFor(x => x.MissingModel.LastSeenDate, null, new { @class = "text-red" })
+                      
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.MissingModel.LastSeenPlace, new { @class = "col-sm-4 control-label" })
+                                <div class="col-sm-8">
+                                    @Html.TextBoxFor(x => x.MissingModel.LastSeenPlace, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.MissingModel.LastSeenPlace, null, new { @class = "text-red" })
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr class="col-md-12" />
+                    <h4 class="text-center col-md-12">Complaint Information</h4>
+                    <hr class="col-md-12" />
                     <div class="col-md-6">
                         <div class="form-group">
-                            @Html.LabelFor(x => x.MissingModel.TStateId, new { @class = "col-sm-4 control-label" })
+                            @Html.LabelFor(x => x.MissingModel.ComplainByName, new { @class = "col-sm-4 control-label" })
                             <div class="col-sm-8">
-                                @Html.DropDownListFor(x => x.MissingModel.TStateId, Model.StateList, "Select State", new { @class = "form-control", id = "state1" })
+                                @Html.TextBoxFor(x => x.MissingModel.ComplainByName, new { @class = "form-control" })
                             </div>
-                            @Html.ValidationMessageFor(x => x.MissingModel.TStateId, null, new { @class = "text-red" })
+                            @Html.ValidationMessageFor(x => x.MissingModel.ComplainByName, null, new { @class = "text-red" })
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(x => x.MissingModel.TMunicipalityId, new { @class = "col-sm-4 control-label" })
+                            @Html.LabelFor(x => x.MissingModel.ComplainContactNumber, new { @class = "col-sm-4 control-label" })
                             <div class="col-sm-8">
-                                @Html.DropDownListFor(x => x.MissingModel.TMunicipalityId, Model.PMunicipalityList, "Select Municipality", new { @class = "form-control", id = "municipality1", disabled = "disabled" })
+                                @Html.TextBoxFor(x => x.MissingModel.ComplainContactNumber, new { @class = "form-control" })
                             </div>
-                            @Html.ValidationMessageFor(x => x.MissingModel.TMunicipalityId, null, new { @class = "text-red" })
+                            @Html.ValidationMessageFor(x => x.MissingModel.ComplainContactNumber, null, new { @class = "text-red" })
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(x => x.MissingModel.TToleName, new { @class = "col-sm-4 control-label" })
+                            @Html.LabelFor(x => x.MissingModel.PossiblePlaces, new { @class = "col-sm-4 control-label" })
                             <div class="col-sm-8">
-                                @Html.TextBoxFor(x => x.MissingModel.TToleName, new { @class = "form-control" })
+                                @Html.TextBoxFor(x => x.MissingModel.PossiblePlaces, new { @class = "form-control" })
                             </div>
-                            @Html.ValidationMessageFor(x => x.MissingModel.TToleName, null, new { @class = "text-red" })
+                            @Html.ValidationMessageFor(x => x.MissingModel.PossiblePlaces, null, new { @class = "text-red" })
                         </div>
+                        <div class="form-group">
 
+                            @Html.LabelFor(x => x.MissingModel.ComplainDate, new { @class = "col-sm-4 control-label" })
+                            <div class="col-sm-8">
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    @Html.TextBoxFor(x => x.MissingModel.ComplainDate, new { @class = "form-control pull-right datepicker" })
+
+
+                                </div>
+                            </div>
+                            @Html.ValidationMessageFor(x => x.MissingModel.ComplainDate, null, new { @class = "text-red" })
+
+                        </div>
 
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            @Html.LabelFor(x => x.MissingModel.TDistrictId, new { @class = "col-sm-4 control-label" })
+                            @Html.LabelFor(x => x.MissingModel.RelationWithVictim, new { @class = "col-sm-4 control-label" })
                             <div class="col-sm-8">
-                                @Html.DropDownListFor(x => x.MissingModel.TDistrictId, Model.PDistrictList, "Select District", new { @class = "form-control", id = "district1", disabled = "disabled" })
+                                @Html.TextBoxFor(x => x.MissingModel.RelationWithVictim, new { @class = "form-control" })
                             </div>
-                            @Html.ValidationMessageFor(x => x.MissingModel.TDistrictId, null, new { @class = "text-red" })
+                            @Html.ValidationMessageFor(x => x.MissingModel.RelationWithVictim, null, new { @class = "text-red" })
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(x => x.MissingModel.TWardNumber, new { @class = "col-sm-4 control-label" })
+                            @Html.LabelFor(x => x.MissingModel.OfficeId, new { @class = "col-sm-4 control-label" })
                             <div class="col-sm-8">
-                                @Html.TextBoxFor(x => x.MissingModel.TWardNumber, new { @class = "form-control" })
+                                @Html.DropDownListFor(x => x.MissingModel.OfficeId, Model.OfficeList, "--Select Office--", new { @class = "form-control"})
                             </div>
-                            @Html.ValidationMessageFor(x => x.MissingModel.TWardNumber, null, new { @class = "text-red" })
+                            @Html.ValidationMessageFor(x => x.MissingModel.OfficeId, null, new { @class = "text-red" })
                         </div>
-
                         <div class="form-group">
-                            @Html.LabelFor(x => x.MissingModel.TContactNumber, new { @class = "col-sm-4 control-label" })
+                            @Html.LabelFor(x => x.MissingModel.MissingReason, new { @class = "col-sm-4 control-label" })
                             <div class="col-sm-8">
-                                @Html.TextBoxFor(x => x.MissingModel.TContactNumber, new { @class = "form-control" })
+                                @Html.TextAreaFor(x => x.MissingModel.MissingReason, new { @class = "textarea", style = "width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" })
                             </div>
-                            @Html.ValidationMessageFor(x => x.MissingModel.TContactNumber, null, new { @class = "text-red" })
+                            @Html.ValidationMessageFor(x => x.MissingModel.MissingReason, null, new { @class = "text-red" })
                         </div>
                     </div>
+
+
                 </div>
         <!-- /.box-body -->
                 <div class="box-footer">
@@ -540,152 +646,89 @@
                 });
             });
 
-            $("#state").change(function () {
 
-                var selectedState = $("#state").val();
+            $(".state").each(function () {
 
-                var districtSelect = $("#district");
+                $(this).change(function () {
 
-                districtSelect.removeAttr("disabled");
+                    var selectedState = $(this).find(":selected").val();
 
-                districtSelect.empty();
+                    var districtSelect = $(this).closest(".element-row").find(".district");
 
-                if (selectedState != null && selectedState != 0) {
+                    districtSelect.removeAttr("disabled");
 
-                    $.ajax({
-                        url: "/api/dropdownlist/getdistrict/" + selectedState,
-                        method: "GET",
-                        success: function (districts) {
-                            if (districts != null && !jQuery.isEmptyObject(districts)) {
+                    districtSelect.empty();
 
-                                districtSelect.append($('<option/>', {
-                                    value: null,
-                                    text: ""
-                                }));
+                    if (selectedState != null && selectedState != 0) {
 
-                                $.each(districts, function (index, district) {
+                        $.ajax({
+                            url: "/api/dropdownlist/getdistrict/" + selectedState,
+                            method: "GET",
+                            success: function (districts) {
+                                if (districts != null && !jQuery.isEmptyObject(districts)) {
 
                                     districtSelect.append($('<option/>', {
-
-                                        value: district.Value,
-                                        text: district.Text
+                                        value: null,
+                                        text: ""
                                     }));
-                                });
+
+                                    $.each(districts, function (index, district) {
+
+                                        districtSelect.append($('<option/>', {
+
+                                            value: district.Value,
+                                            text: district.Text
+                                        }));
+                                    });
+                                }
                             }
-                        }
-                    });
-                }
+                        });
+                    }
+                });
+
             });
 
-            $("#district").change(function () {
+            $(".district").each(function () {
 
-                var selectedDistrict= $("#district").val();
+                $(this).change(function () {
 
-                var municipalitySelect = $("#municipality");
+                    var selectedDistrict = $(this).find(":selected").val();
 
-                municipalitySelect.removeAttr("disabled");
+                    var municipalitySelect = $(this).closest(".element-row").find(".municipality");
 
-                municipalitySelect.empty();
+                    municipalitySelect.removeAttr("disabled");
 
-                if (selectedDistrict != null && selectedDistrict!= 0) {
+                    municipalitySelect.empty();
 
-                    $.ajax({
-                        url: "/api/dropdownlist/getmunicipality/" + selectedDistrict,
-                        method: "GET",
-                        success: function (municipalities) {
-                            if (municipalities != null && !jQuery.isEmptyObject(municipalities)) {
+                    if (selectedDistrict != null && selectedDistrict != 0) {
 
-                                municipalitySelect.append($('<option/>', {
-                                    value: null,
-                                    text: ""
-                                }));
-
-                                $.each(municipalities, function (index, municipality) {
+                        $.ajax({
+                            url: "/api/dropdownlist/getmunicipality/" + selectedDistrict,
+                            method: "GET",
+                            success: function (municipalities) {
+                                if (municipalities != null && !jQuery.isEmptyObject(municipalities)) {
 
                                     municipalitySelect.append($('<option/>', {
-
-                                        value: municipality.Value,
-                                        text: municipality.Text
+                                        value: null,
+                                        text: ""
                                     }));
-                                });
+
+                                    $.each(municipalities, function (index, municipality) {
+
+                                        municipalitySelect.append($('<option/>', {
+
+                                            value: municipality.Value,
+                                            text: municipality.Text
+                                        }));
+                                    });
+                                }
                             }
-                        }
-                    });
-                }
+                        });
+                    }
+                });
+
             });
-            $("#state1").change(function () {
-
-                var selectedState = $("#state1").val();
-
-                var districtSelect = $("#district1");
-
-                districtSelect.removeAttr("disabled");
-
-                districtSelect.empty();
-
-                if (selectedState != null && selectedState != 0) {
-
-                    $.ajax({
-                        url: "/api/dropdownlist/getdistrict/" + selectedState,
-                        method: "GET",
-                        success: function (districts) {
-                            if (districts != null && !jQuery.isEmptyObject(districts)) {
-
-                                districtSelect.append($('<option/>', {
-                                    value: null,
-                                    text: ""
-                                }));
-
-                                $.each(districts, function (index, district) {
-
-                                    districtSelect.append($('<option/>', {
-
-                                        value: district.Value,
-                                        text: district.Text
-                                    }));
-                                });
-                            }
-                        }
-                    });
-                }
-            });
-
-            $("#district1").change(function () {
-
-                var selectedDistrict = $("#district1").val();
-
-                var municipalitySelect = $("#municipality1");
-
-                municipalitySelect.removeAttr("disabled");
-
-                municipalitySelect.empty();
-
-                if (selectedDistrict != null && selectedDistrict != 0) {
-
-                    $.ajax({
-                        url: "/api/dropdownlist/getmunicipality/" + selectedDistrict,
-                        method: "GET",
-                        success: function (municipalities) {
-                            if (municipalities != null && !jQuery.isEmptyObject(municipalities)) {
-
-                                municipalitySelect.append($('<option/>', {
-                                    value: null,
-                                    text: ""
-                                }));
-
-                                $.each(municipalities, function (index, municipality) {
-
-                                    municipalitySelect.append($('<option/>', {
-
-                                        value: municipality.Value,
-                                        text: municipality.Text
-                                    }));
-                                });
-                            }
-                        }
-                    });
-                }
-            });
+            
         });
 
     </script>

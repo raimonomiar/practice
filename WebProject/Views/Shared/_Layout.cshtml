@@ -388,15 +388,28 @@ desired effect
 
             $("#example1").DataTable();
 
-            $('#datepicker').datepicker({
-                autoclose: true
-            });
+            //$("#datepicker").each(function () {
 
-            $('#datepicker1').datepicker({
+            //    $(this).datepicker({
+            //        autoclose: true
+            //    });
+            //});
+            $(".datepicker").datepicker({
                 autoclose: true
             });
 
             $(".textarea").wysihtml5();
+
+            //$(".timepicker").each(function () {
+
+            //    $(this).timepicker({
+            //        showInputs: false
+            //    });
+            //});   
+
+            $(".timepicker").timepicker({
+                showInputs: false
+            });
         });
 
      

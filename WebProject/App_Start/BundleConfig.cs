@@ -17,7 +17,8 @@ namespace WebProject
              "~/admin-lte/plugins/datatables/jquery.dataTables.min.js",
              "~/admin-lte/plugins/datatables/dataTables.bootstrap.min.js",
              "~/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js",
-             "~/admin-lte/plugins/datepicker/bootstrap-datepicker.js"));
+             "~/admin-lte/plugins/datepicker/bootstrap-datepicker.js",
+             "~/admin-lte/plugins/timepicker/bootstrap-timepicker.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
@@ -43,7 +44,8 @@ namespace WebProject
                         "~/admin-lte/plugins/select2/select2.min.css",
                         "~/admin-lte/plugins/iCheck/all.css",
                         "~/admin-lte/plugins/datatables/dataTables.bootstrap.css",
-                        "~/admin-lte/plugins/datepicker/datepicker3.css"));
+                        "~/admin-lte/plugins/datepicker/datepicker3.css," +
+                        "~/admin-lte/plugins/timepicker/bootstrap-timepicker.min.css"));
         }
     }
 }

@@ -204,5 +204,12 @@ namespace WebProject.Controllers
             
             
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(MissingUnApproveController model,IEnumerable<HttpPostedFileBase> files,HttpPostedFileBase file)
+        {
+
+        }
     }
 }
